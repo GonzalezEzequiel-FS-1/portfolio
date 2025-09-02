@@ -35,7 +35,7 @@ const NavigationBar = () => {
         className="hidden md:flex items-center justify-center flex-1"
       >
         <h1 className="text-white font-average text-lg tracking-wide">
-          Full Stack Developer
+          Ezequiel Gonzalez - Full Stack Developer
         </h1>
       </motion.div>
 
