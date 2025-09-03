@@ -15,7 +15,7 @@ const NavigationBar = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="fixed top-0 left-0 w-full z-50 bg-slate-950/90 backdrop-blur-md shadow-md flex items-center justify-between px-8 py-4"
+      className="fixed top-0 left-0 w-full z-50 bg-slate-950/10 backdrop-blur-md shadow-md flex items-center justify-between px-8 py-4"
     >
       {/* Logo */}
       <motion.div
@@ -28,17 +28,7 @@ const NavigationBar = () => {
       </motion.div>
 
       {/* Center / Tagline */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
-        className="hidden md:flex items-center justify-center flex-1"
-      >
-        <h1 className="text-white font-average text-lg tracking-wide">
-          Ezequiel Gonzalez - Full Stack Developer
-        </h1>
-      </motion.div>
-
+  
       {/* Menu */}
       <ul className="flex gap-6 text-white font-average text-base">
         {menuItems.map((item, index) => (

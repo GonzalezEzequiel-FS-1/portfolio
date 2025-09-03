@@ -5,15 +5,21 @@ import Features from '../components/Features'
 
 const Home = () => {
     return (
-        <div className="w-full flex flex-col items-center justify-start bg-slate-950">
-            <Hero />
-
-            {/* Features / Highlights Section */}
-            <Features />
-            <CarouselComponent />
+        <div className="w-full h-screen overflow-y-scroll snap-y snap-mandatory">
+            <section className='snap-start h-screen w-screen'>
+                <Hero />
+            </section>
+            <section className='snap-start h-screen  flex items-center justify-center'>
+                <Features />
+            </section>
+            <section className='snap-start h-screen'>
+                <CarouselComponent />
+            </section>
+             <section className='snap-start h-screen  flex items-center justify-center'>
+                <Features />
+            </section>
         </div>
     )
-
 }
 
 export default Home
