@@ -1,5 +1,6 @@
 import { Button } from "@mantine/core";
 import { motion } from "framer-motion";
+import FormModal from "./modal/FormModal";
 
 const NUM_FIREFLIES = 30;
 
@@ -83,9 +84,7 @@ export default function Hero() {
           <Button className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-105 transition-transform">
             See my Work
           </Button>
-          <Button className="bg-gradient-to-r from-green-400 to-teal-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-105 transition-transform">
-            Contact me
-          </Button>
+          <FormModal />
         </motion.div>
       </motion.div>
     </section>

@@ -2,6 +2,8 @@ import React from 'react'
 import Hero from '../components/Hero'
 import CarouselComponent from '../components/carousel/CarouselComponent'
 import Features from '../components/Features'
+import ContactForm from '../components/forms/ContactForm'
+import FormModal from '../components/modal/FormModal'
 
 const Home = () => {
     return (
@@ -17,6 +19,9 @@ const Home = () => {
             </section>
              <section className='snap-start h-screen  flex items-center justify-center'>
                 <Features />
+            </section>
+            <section className='snap-start h-screen  flex items-center justify-center'>
+                <FormModal />
             </section>
         </div>
     )
