@@ -66,7 +66,7 @@ const ContactForm = () => {
         </Alert>
       )}
 
-      <form className="w-full flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg" onSubmit={form.onSubmit(handleFormSubmit)}>
+      <form className="w-2/4 flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg" onSubmit={form.onSubmit(handleFormSubmit)}>
         <TextField
           label="First Name:"
           description="Please provide your first name."

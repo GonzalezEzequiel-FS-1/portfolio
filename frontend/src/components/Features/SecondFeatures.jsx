@@ -1,5 +1,6 @@
 import React from 'react'
-import FeatureCard from './cards/FeatureCard'
+
+import SecondFeatureCard from '../cards/SecondFeatureCard'
 const features = [
     {
         title: 'Custom Web Solutions',
@@ -23,10 +24,10 @@ const features = [
     }
 ]
 
-const Features = () => {
+const SecondFeatures = () => {
     return (
         <div className='w-screen'>
-            <FeatureCard
+            <SecondFeatureCard
                 titleOne={features[0].title}
                 subOne={features[0].sub}
                 titleTwo={features[1].title}
@@ -41,4 +42,4 @@ const Features = () => {
     )
 }
 
-export default Features
+export default SecondFeatures

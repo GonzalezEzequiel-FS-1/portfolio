@@ -3,7 +3,7 @@ import React from 'react'
 
 const AboutMe = () => {
     return (
-        <Container size="lg" py="6rem">
+        <Container size="sm" py="6rem">
             <Stack spacing="2rem" align="center">
                 <Text
                     styles={{
