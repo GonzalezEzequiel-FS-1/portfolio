@@ -1,20 +1,21 @@
 import React from 'react'
 import { Textarea } from '@mantine/core'
 import {PropTypes} from "prop-types"
-const MultiLineTextInput = ({label, description, placeholder, minRows, error, asterisk, disabled, value, onChange}) => {
+const MultiLineTextInput = ({styles, label, description, placeholder, minRows, error, asterisk, disabled, value, onChange}) => {
   return (
 
      <Textarea
      label={label}
      description={description}
      placeholder={placeholder}
-     autosize
      minRows={minRows}
+     
      error={error}
      asterisk={asterisk}
      disabled={disabled}
      value={value}
      onChange={onChange}
+     styles={styles}
      />
   )
 }
@@ -30,5 +31,6 @@ MultiLineTextInput.propTypes={
     asterisk: PropTypes.bool,
     disabled: PropTypes.bool,
     value: PropTypes.string,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    autoSize: PropTypes.bool
 }

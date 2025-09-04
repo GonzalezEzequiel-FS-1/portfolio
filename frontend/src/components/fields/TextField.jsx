@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from "prop-types"
 import { TextInput } from '@mantine/core'
-const TextField = ({label, description, placeholder, onChange, value, icon, error, asterisk, disabled, ariaLabel}) => {
+const TextField = ({styles, label, description, placeholder, onChange, value, icon, error, asterisk, disabled, ariaLabel}) => {
   return (
     <>
      <TextInput
@@ -15,6 +15,7 @@ const TextField = ({label, description, placeholder, onChange, value, icon, erro
       asterisk={asterisk}
       disabled={disabled}
       aria-label={ariaLabel}
+      styles={styles}
      />
     </>
   )

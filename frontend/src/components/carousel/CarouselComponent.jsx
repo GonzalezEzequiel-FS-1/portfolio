@@ -51,36 +51,46 @@ export default function TechShuffle() {
   return (
     <div className=" w-screen h-screen pt-32 flex flex-col items-center justify-center gap-32 py-10">
       <div className="text-center">
-      <h2 className="text-4xl text-white font-bold mb-8 font-tomorrow">
-        Tools and Technologies
-      </h2>
-      <div className="flex flex-wrap justify-center gap-8 relative w-full max-w-6xl">
-        <AnimatePresence>
-          {shuffledTechs.map((tech) => (
-            <motion.div
-              key={tech.name}
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="flex flex-col items-center justify-center w-20"
-            >
-              {tech.icon}
-              <span className="text-stone-200 font-medium mt-2 text-center text-sm">
-                {tech.name}
-              </span>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        <Text
+          styles={{
+            root: {
+              padding: '0rem 0rem 4 rem 0rem'
+            }
+          }}
+          size="3rem"
+          fw={900}
+          variant="gradient"
+          gradient={{ from: 'violet', to: 'blue', deg: 202 }}
+        >
+          Tools and Technologies
+        </Text>
+        <div className="flex flex-wrap justify-center gap-8 relative w-full max-w-6xl">
+          <AnimatePresence>
+            {shuffledTechs.map((tech) => (
+              <motion.div
+                key={tech.name}
+                layout
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="flex flex-col items-center justify-center w-20"
+              >
+                {tech.icon}
+                <span className="text-stone-200 font-medium mt-2 text-center text-sm">
+                  {tech.name}
+                </span>
+              </motion.div>
+            ))}
+          </AnimatePresence>
 
-      </div>
+        </div>
       </div>
       <div className="w-2/4 flex flex-col justify-around items-center text-center gap-1">
         <Text
           styles={{
-            root:{
-              padding:'0rem 0rem 1rem 0rem'
+            root: {
+              padding: '0rem 0rem 1rem 0rem'
             }
           }}
           size="3rem"

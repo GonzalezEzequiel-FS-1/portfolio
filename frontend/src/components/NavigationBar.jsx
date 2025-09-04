@@ -1,15 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 const menuItems = [
-  { name: 'About Me', link: '#about' },
-  { name: 'CV', link: '/cv.pdf', external: true },
-  { name: 'Contact Me', link: '#contact' },
+  
+  { name: 'Features', link: '#featuresOne' },
+  { name: 'Tools and Tech', link: '#carrousel' },
   { name: 'GitHub', link: 'https://github.com/GonzalezEzequiel-FS-1', external: true },
+  { name: 'About Me', link: '#about' },
+  { name: 'Contact Me', link: '#contact' },
+  { name: 'CV', link: '../../Docs/EzequielGonzalezResume.pdf', external: true },
+  
 ];
 
 const NavigationBar = () => {
+
+  const handleScroll = (e, link) => {
+    e.preventDefault();
+    const sectionId = link.replace('#', '');
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   return (
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
@@ -27,11 +40,9 @@ const NavigationBar = () => {
         EG<span className="text-indigo-400">Web</span>Dev
       </motion.div>
 
-      {/* Center / Tagline */}
-  
       {/* Menu */}
       <ul className="flex gap-6 text-white font-average text-base">
-        {menuItems.map((item, index) => (
+        {menuItems.map((item) => (
           <motion.li
             key={item.name}
             whileHover={{ scale: 1.1, color: '#818cf8' }}
@@ -42,9 +53,11 @@ const NavigationBar = () => {
               <a href={item.link} target="_blank" rel="noopener noreferrer">
                 {item.name}
               </a>
-            ) : (
-              <Link to={item.link}>{item.name}</Link>
-            )}
+            ) : item.link.startsWith('#') ? (
+              <a href={item.link} onClick={(e) => handleScroll(e, item.link)}>
+                {item.name}
+              </a>
+            ) : null}
           </motion.li>
         ))}
       </ul>
