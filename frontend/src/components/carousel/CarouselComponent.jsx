@@ -54,7 +54,7 @@ export default function TechShuffle() {
         <Text
           styles={{
             root: {
-              padding: '0rem 0rem 4 rem 0rem'
+              padding: '0rem 0rem 4rem 0rem'
             }
           }}
           size="3rem"

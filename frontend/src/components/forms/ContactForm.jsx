@@ -23,7 +23,7 @@ const ContactForm = () => {
 
   const handleFormSubmit = async (values) => {
     try {
-      await axios.post('http://localhost:3000/api/contact', {
+      await axios.post('/api/contact', {
         firstName: values.contactName,
         lastName: values.contactLastName,
         email: values.email,
@@ -66,12 +66,12 @@ const ContactForm = () => {
         </Alert>
       )}
 
-      <form className="w-full flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg" onSubmit={form.onSubmit(handleFormSubmit)}>
+      <form className="w-2/4 flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg" onSubmit={form.onSubmit(handleFormSubmit)}>
         <TextField
           label="First Name:"
           description="Please provide your first name."
           placeholder="Type your name"
-          styles={{ label: { fontSize: '1.25rem', fontWeight: 800, letterSpacing: '.15rem' }, input: { backgroundColor: '#44444450', fontWeight: 800, letterSpacing: '.15rem' }  }}
+          styles={{ label: { fontSize: '1.25rem', fontWeight: 800, letterSpacing: '.15rem' }, input: { backgroundColor: '#44444450', fontWeight: 800, letterSpacing: '.15rem' } }}
           {...form.getInputProps('contactName')}
         />
 
