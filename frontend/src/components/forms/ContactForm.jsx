@@ -23,7 +23,7 @@ const ContactForm = () => {
 
   const handleFormSubmit = async (values) => {
     try {
-      await axios.post('/api/contact', {
+      await axios.post('https://www.egwebdev.com/api/contact', {
         firstName: values.contactName,
         lastName: values.contactLastName,
         email: values.email,

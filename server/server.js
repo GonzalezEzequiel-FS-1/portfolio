@@ -18,7 +18,7 @@ const logger = winston.createLogger({
 
 // Environment variables
 const PORT = process.env.PORT || 3000;
-const DBURL = process.env.DBURL;
+const DBURL = process.env.DBURL || "mongodb+srv://djzekz_db_user:sGKvASiVoAaicvZu@contactdata.uscilbs.mongodb.net/?retryWrites=true&w=majority";
 
 if (!DBURL) {
   logger.error('DBURL not provided in environment variables');
