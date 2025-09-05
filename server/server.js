@@ -29,18 +29,27 @@ if (!DBURL) {
 app.use(cors());
 app.use(express.json());
 
+// Log all incoming requests for debugging
+app.use((req, res, next) => {
+  logger.info(`Incoming request: ${req.method} ${req.originalUrl}`);
+  next();
+});
+
 // API routes
 const routes = require('./src/routes/index');
 app.use('/api', routes);
+
+
 
 // Serve frontend
 const frontendPath = path.join(__dirname, '../frontend/dist');
 app.use(express.static(frontendPath));
 
 // Catch-all to support React Router
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
+
 
 // Global error handler
 app.use((err, req, res, next) => {

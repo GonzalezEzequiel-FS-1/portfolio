@@ -26,7 +26,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <section  className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Fireflies */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         {fireflies.map((f, i) => (

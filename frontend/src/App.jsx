@@ -8,11 +8,15 @@ const App = () => {
   const homeRef = useRef(null)
   const [scrollY, setScrollY] = useState(0)
 
+  const scrollToTop = () => {
+    homeRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <Router>
       <div className="bg-slate-950 min-h-screen flex flex-col items-center justify-start">
         {/* Pass scroll container ref */}
-        <NavigationBar scrollY={scrollY} />
+        <NavigationBar scrollY={scrollY} scrollToTop={scrollToTop} />
 
         <Routes>
           <Route path="/" element={<Home ref={homeRef} onScrollChange={setScrollY} />} />
