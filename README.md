@@ -2,7 +2,7 @@
 
 This is the personal portfolio website of Ezequiel Gonzalez. It showcases my web development projects, skills, and contact information.
 
-## Live Demo
+## See it live
 
 [https://www.egwebdev.com](https://www.egwebdev.com)
 
