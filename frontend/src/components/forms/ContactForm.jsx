@@ -1,7 +1,7 @@
 import { useForm } from "@mantine/form";
-import TextField from "../fields/TextField";
+import TextField from "../fields/TextField.jsx";
 import { Button, Alert, Container, Text } from "@mantine/core";
-import MultiLineTextInput from "../fields/MultiLineTextInput.jsx";
+import MultiLineTextInput from "../fields/MultiLineTextInput.jsx.jsx";
 import axios from "axios";
 import { useState, useEffect } from "react";
 

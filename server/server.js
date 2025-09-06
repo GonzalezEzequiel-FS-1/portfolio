@@ -2,6 +2,8 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
 
+
+
 const express = require('express');
 const cors = require('cors');
 const winston = require('winston');
@@ -20,10 +22,11 @@ const logger = winston.createLogger({
 const PORT = process.env.PORT || 3000;
 const DBURL = process.env.DBURL || "mongodb+srv://djzekz_db_user:sGKvASiVoAaicvZu@contactdata.uscilbs.mongodb.net/?retryWrites=true&w=majority";
 
-if (!DBURL) {
-  logger.error('DBURL not provided in environment variables');
+if (!DBURL || !PORT) {
+  logger.error("Missing required environment variables");
   process.exit(1);
 }
+
 
 // Middleware
 app.use(cors());
