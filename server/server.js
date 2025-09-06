@@ -29,7 +29,16 @@ if (!DBURL || !PORT) {
 
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://www.egwebdev.com",
+    "https://www.egwebdev.com",
+    "http://172.233.188.182",
+    "https://172.233.188.182"
+  ],
+  methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
+  credentials: true
+}));
 app.use(express.json());
 
 // Log all incoming requests for debugging

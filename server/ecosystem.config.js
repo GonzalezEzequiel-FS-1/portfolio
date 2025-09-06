@@ -9,7 +9,7 @@ module.exports = {
         EMAIL_HOST: 'smtp.gmail.com',
         EMAIL_PORT: 465,
         EMAIL_USER: 'djzekz@gmail.com',
-        EMAIL_PASS: 'your_password_here'
+        EMAIL_PASS: 'kpmv kcsq ylml riyc'
       }
     }
   ]

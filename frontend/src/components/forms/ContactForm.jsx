@@ -23,19 +23,21 @@ const ContactForm = () => {
   });
 
   const handleFormSubmit = async (values) => {
+    console.log("Inside HandleFormSubmit")
     try {
-      await axios.post("/api/contact", {
+      console.log('Before Await')
+      await axios.post("https://www.egwebdev.com/api/contact", {
         firstName: values.contactName,
         lastName: values.contactLastName,
         email: values.email,
-        message: values.message,
-      });
+        message: values.message
 
+      });
       form.reset();
       setNewAlert("Your message has been sent!");
     } catch (err) {
       console.error(err);
-      alert("Something went wrong. Try again later.");
+      setNewAlert("Something went wrong. Try again later.");
     }
   };
 
