@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="bg-slate-950 min-h-screen flex flex-col justify-start w-screen">
+      <div className="bg-slate-950 min-h-screen flex flex-col justify-start w-screen overflow-x-hidden">
         {/* Pass scroll container ref */}
         <NavigationBar scrollY={scrollY} scrollToTop={scrollToTop} />
 

@@ -65,7 +65,7 @@ const SecondFeatures = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className={`min-w-[280px] sm:min-w-[320px] lg:min-w-[360px] snap-center bg-gradient-to-br ${feature.gradient} rounded-3xl shadow-lg flex flex-col items-center justify-center text-white p-6 hover:scale-105 transition-transform overflow-x-hidden`}
+            className={`min-w-[280px] sm:min-w-[320px] lg:min-w-[360px] snap-center bg-gradient-to-br ${feature.gradient} rounded-3xl shadow-lg flex flex-col items-center justify-center text-white p-6 hover:scale-105 transition-transform`}
           >
             <h2 className="text-xl sm:text-2xl font-bold mb-2 text-center">
               {feature.title}
