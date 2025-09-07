@@ -49,22 +49,22 @@ export default function TechShuffle() {
   }, []);
 
   return (
-    <div className=" w-screen h-screen pt-32 flex flex-col items-center justify-center gap-32 py-10">
-      <div className="text-center">
+    <div className=" md:w-screen w-2/4 flex flex-col items-center justify-center">
+      <div className="text-center flex flex-col items-center justify-center">
         <Text
           styles={{
             root: {
-              padding: '0rem 0rem 4rem 0rem'
-            }
+              padding: "0rem 0rem 4rem 0rem",
+            },
           }}
           size="3rem"
           fw={900}
           variant="gradient"
-          gradient={{ from: 'violet', to: 'blue', deg: 202 }}
+          gradient={{ from: "violet", to: "blue", deg: 202 }}
         >
           Tools and Technologies
         </Text>
-        <div className="flex flex-wrap justify-center gap-8 relative w-full max-w-6xl">
+        <div className="flex flex-wrap justify-center gap-8 w-screen">
           <AnimatePresence>
             {shuffledTechs.map((tech) => (
               <motion.div
@@ -83,26 +83,7 @@ export default function TechShuffle() {
               </motion.div>
             ))}
           </AnimatePresence>
-
         </div>
-      </div>
-      <div className="w-2/4 flex flex-col justify-around items-center text-center gap-1">
-        <Text
-          styles={{
-            root: {
-              padding: '0rem 0rem 1rem 0rem'
-            }
-          }}
-          size="3rem"
-          fw={900}
-          variant="gradient"
-          gradient={{ from: 'violet', to: 'blue', deg: 202 }}
-        >
-          What I Love doing?
-        </Text>
-        <Text
-          size="2rem"
-        >I specialize in modern web development, leveraging a diverse set of tools and technologies to build fast, scalable, and visually engaging applications. From frontend frameworks to backend solutions, I craft end-to-end experiences that meet both user and business needs.</Text>
       </div>
     </div>
   );

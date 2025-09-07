@@ -21,7 +21,7 @@ const sendEmailNotification = async (contactData) => {
   );
   const mailOptions = {
     from: `"Contact Form" <${process.env.EMAIL_USER}>`,
-    to: process.env.EMAIL_USER, // your inbox
+    to: process.env.EMAIL_USER,
     subject: `New Contact Form Submission from ${firstName} ${lastName}`,
     html: `
       <p><strong>Name:</strong> ${firstName} ${lastName}</p>

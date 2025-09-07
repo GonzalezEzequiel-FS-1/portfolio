@@ -1,36 +1,46 @@
-import React from 'react'
-import FeatureCard from '../cards/FeatureCard'
+import React from "react";
+
+import SecondFeatureCard from "../cards/SecondFeatureCard";
 const features = [
   {
-    title: 'Full-Stack Expertise',
-    sub: 'Proficient in the MERN stack with hands-on experience building scalable, maintainable web applications.'
+    title: "Custom Web Solutions",
+    sub: "Tailored applications that solve real problems for your business or personal projects.",
   },
   {
-    title: 'ADHD-Focused Productivity Apps',
-    sub: 'Designed and developed "Momentum," a full-stack app tailored for ADHD users to organize tasks, track goals, and gamify productivity.'
+    title: "UI / UX Design",
+    sub: "Clean, modern, and intuitive designs that engage users and improve experiences.",
   },
   {
-    title: 'Doctor in Medicine',
-    sub: 'Educational background in medicine, bringing a disciplined, analytical, and detail-oriented approach to problem-solving.'
-  }
-]
+    title: "Performance & Optimization",
+    sub: "Fast, reliable, and optimized solutions for maximum efficiency and scalability.",
+  },
+  {
+    title: "Momentum App",
+    sub: "A productivity app for ADHD, combining task organization and gamification.",
+  },
+  {
+    title: "EG WebDev Portfolio",
+    sub: "A showcase of high-end web development projects with professional animations and responsive design.",
+  },
+  {
+    title: "Coming Soon",
+    sub: "Placeholder for future projects or client work with cutting-edge design",
+  },
+];
 
-const Features = () => {
-    return (
-        <div className='w-screen'>
-            <FeatureCard
-                titleOne={features[0].title}
-                subOne={features[0].sub}
-                titleTwo={features[1].title}
-                subTwo={features[1].sub}
-                titleThree={features[2].title}
-                subThree={features[2].sub}
-            />
+const SecondFeatures = () => {
+  return (
+    <div className="w-screen">
+      <SecondFeatureCard
+        titleOne={features[0].title}
+        subOne={features[0].sub}
+        titleTwo={features[1].title}
+        subTwo={features[1].sub}
+        titleThree={features[2].title}
+        subThree={features[2].sub}
+      />
+    </div>
+  );
+};
 
-            
-
-        </div>
-    )
-}
-
-export default Features
+export default SecondFeatures;

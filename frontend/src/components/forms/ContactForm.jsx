@@ -1,12 +1,13 @@
 import { useForm } from "@mantine/form";
 import TextField from "../fields/TextField.jsx";
+import MultiLineTextInput from "../fields/MultiLineTextInput.jsx";
 import { Button, Alert, Container, Text } from "@mantine/core";
-import MultiLineTextInput from "../fields/MultiLineTextInput.jsx.jsx";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 const ContactForm = () => {
   const [newAlert, setNewAlert] = useState("");
+
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
@@ -23,15 +24,12 @@ const ContactForm = () => {
   });
 
   const handleFormSubmit = async (values) => {
-    console.log("Inside HandleFormSubmit")
     try {
-      console.log('Before Await')
       await axios.post("https://www.egwebdev.com/api/contact", {
         firstName: values.contactName,
         lastName: values.contactLastName,
         email: values.email,
-        message: values.message
-
+        message: values.message,
       });
       form.reset();
       setNewAlert("Your message has been sent!");
@@ -41,7 +39,7 @@ const ContactForm = () => {
     }
   };
 
-  // Automatically hide success message after 5 seconds
+  // Hide alert after 5 seconds
   useEffect(() => {
     if (newAlert) {
       const timer = setTimeout(() => setNewAlert(""), 5000);
@@ -50,14 +48,18 @@ const ContactForm = () => {
   }, [newAlert]);
 
   return (
-    <Container className="w-full max-w-2xl flex flex-col items-center justify-center py-10">
+    <Container size="lg" py={{ base: "3rem", md: "6rem" }} px="1rem">
       <Text
-        size={48}
+        styles={{
+          root: {
+            textAlign: "center",
+            paddingBottom: "1rem",
+          },
+        }}
+        size={"3rem"}
         fw={900}
         variant="gradient"
         gradient={{ from: "violet", to: "blue", deg: 202 }}
-        style={{ paddingBottom: "2rem", lineHeight: 1.1 }}
-        align="center"
       >
         Let's get in Touch:
       </Text>
@@ -75,7 +77,7 @@ const ContactForm = () => {
       )}
 
       <form
-        className="w-2/4 flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg"
+        className="w-full max-w-2xl flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg"
         onSubmit={form.onSubmit(handleFormSubmit)}
       >
         <TextField
@@ -143,7 +145,7 @@ const ContactForm = () => {
         />
 
         <div className="w-full flex justify-center mt-4">
-          <Button type="submit" styles={{ root: { width: "50%" } }}>
+          <Button type="submit" className="w-full sm:w-1/2">
             Submit
           </Button>
         </div>

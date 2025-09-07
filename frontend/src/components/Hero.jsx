@@ -1,4 +1,4 @@
-import { Button } from "@mantine/core";
+import { Anchor, Button } from "@mantine/core";
 import { motion } from "framer-motion";
 import FormModal from "./modal/FormModal";
 import { useMemo } from "react";
@@ -19,16 +19,18 @@ export default function Hero() {
       const endY = startY + (Math.random() * 200 - 100);
       const duration = Math.random() * 6 + 4;
       const delay = Math.random() * 5;
-      const color = `rgba(255,255,${200 + Math.random() * 50},${0.6 + Math.random() * 0.2})`;
+      const color = `rgba(255,255,${200 + Math.random() * 50},${
+        0.6 + Math.random() * 0.2
+      })`;
 
       return { size, startX, startY, endX, endY, duration, delay, color };
     });
   }, []);
 
   return (
-    <section  className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Fireflies */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-screen pointer-events-none">
         {fireflies.map((f, i) => (
           <motion.div
             key={i}
@@ -89,25 +91,35 @@ export default function Hero() {
           transition={{ delay: 0.6, duration: 1 }}
           className="flex gap-6 mt-6"
         >
-          <Button
-            onClick={() => window.open("https://github.com/GonzalezEzequiel-FS-1", "_blank")}
-            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-105 transition-transform"
-          >
-            See my Work
-          </Button>
+          <div className="flex flex-col gap-6">
+            <div className="flex gap-3">
+              <Button
+                onClick={() =>
+                  window.open(
+                    "https://github.com/GonzalezEzequiel-FS-1",
+                    "_blank"
+                  )
+                }
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-105 transition-transform w-1/2"
+              >
+                See my Work
+              </Button>
 
-
-          <Button
-            onClick={() => {
-              const contactSection = document.getElementById('contact');
-              if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-105 transition-transform"
-          >
-            Contact Me
-          </Button>
-
-
+              <Button
+                onClick={() => {
+                  const contactSection = document.getElementById("contact");
+                  if (contactSection)
+                    contactSection.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-105 transition-transform w-1/2"
+              >
+                Contact Me
+              </Button>
+            </div>
+            <Anchor href="/Docs/EzequielGonzalezResume.pdf">
+              Download My Resume
+            </Anchor>
+          </div>
         </motion.div>
       </motion.div>
     </section>
