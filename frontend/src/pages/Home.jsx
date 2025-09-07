@@ -43,7 +43,7 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
         <AboutMe />
       </section>
 
-      <section>
+      <section className="w-screen flex items-center justify-center overflow-x-hidden">
         <SecondFeatures />
       </section>
 
