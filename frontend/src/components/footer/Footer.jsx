@@ -31,7 +31,7 @@ const Footer = () => {
                             <p>(407) 864-3595</p>
                         </div>
                     </Anchor>
-                    <Anchor href="https://linkedin.com/in/username" target="_blank" className={`flex items-center gap-2 text-${primaryColor} hover:text-${hoverColor}`}>
+                    <Anchor href="https://linkedin.com/in/ezequielgonzalezhidalgo" target="_blank" className={`flex items-center gap-2 text-${primaryColor} hover:text-${hoverColor}`}>
                         <div className='flex flex-col items-center justify-center'><FaLinkedin /><p>LinkedIn</p></div>
                     </Anchor>
                     <Anchor href="https://github.com/GonzalezEzequiel-FS-1" target="_blank" className={`flex items-center gap-2 text-${primaryColor} hover:text-${hoverColor}`}>
