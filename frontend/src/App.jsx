@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NavigationBar from "./components/NavigationBar";
+import BlogPage from "./pages/BlogPage";
 
 const App = () => {
   const homeRef = useRef(null);
@@ -22,6 +23,7 @@ const App = () => {
             path="/"
             element={<Home ref={homeRef} onScrollChange={setScrollY} />}
           />
+          <Route path="/blogs" element={<BlogPage />} />
         </Routes>
       </div>
     </Router>
