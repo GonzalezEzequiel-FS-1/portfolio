@@ -55,10 +55,11 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
         <Specializations />
       </section>
 
-      <section className="w-screen flex flex-col items-center justify-around">
-        <section id="contact">
-          <ContactForm />
-        </section>
+      <section
+        id="contact"
+        className="w-screen flex flex-col items-center justify-around"
+      >
+        <ContactForm />
         <Footer />
       </section>
     </div>

@@ -1,45 +1,48 @@
-const path = require('path');
-const dotenv = require('dotenv');
+const path = require("path");
+const dotenv = require("dotenv");
 dotenv.config();
 
-
-
-const express = require('express');
-const cors = require('cors');
-const winston = require('winston');
-const connectDB = require('./src/db/connection/dbConnection');
+const express = require("express");
+const cors = require("cors");
+const winston = require("winston");
+const connectDB = require("./src/db/connection/dbConnection");
 
 const app = express();
 
 // Logger
 const logger = winston.createLogger({
-  level: 'info',
+  level: "info",
   format: winston.format.simple(),
   transports: [new winston.transports.Console()],
 });
 
 // Environment variables
 const PORT = process.env.PORT || 3000;
-const DBURL = process.env.DBURL || "mongodb+srv://djzekz_db_user:sGKvASiVoAaicvZu@contactdata.uscilbs.mongodb.net/?retryWrites=true&w=majority";
+const DBURL =
+  process.env.DBURL ||
+  "mongodb+srv://djzekz_db_user:sGKvASiVoAaicvZu@contactdata.uscilbs.mongodb.net/?retryWrites=true&w=majority";
 
 if (!DBURL || !PORT) {
   logger.error("Missing required environment variables");
   process.exit(1);
 }
 
-
 // Middleware
-app.use(cors({
-  origin: [
-    "http://www.egwebdev.com",
-    "https://www.egwebdev.com",
-    "http://172.233.188.182",
-    "https://172.233.188.182"
-  ],
-  methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
-  credentials: true
-}));
-app.use(express.json());
+app.use(
+  cors({
+    origin: [
+      "http://www.egwebdev.com",
+      "https://www.egwebdev.com",
+      "http://172.233.188.182",
+      "https://172.233.188.182",
+      "http://107.115.108.50",
+    ],
+    methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
+    credentials: true,
+  })
+);
+app.use(express.json({ limit: "10mb" })); // or higher if needed
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 // Log all incoming requests for debugging
 app.use((req, res, next) => {
@@ -48,27 +51,27 @@ app.use((req, res, next) => {
 });
 
 // API routes
-const routes = require('./src/routes/index');
-app.use('/api', routes);
-
-
+const routes = require("./src/routes/index");
+app.use("/api", routes);
 
 // Serve frontend
-const frontendPath = path.join(__dirname, '../frontend/dist');
+const frontendPath = path.join(__dirname, "../frontend/dist");
 app.use(express.static(frontendPath));
 
 // Catch-all to support React Router
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(frontendPath, 'index.html'));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
-
 
 // Global error handler
 app.use((err, req, res, next) => {
   logger.error(err.stack);
   res.status(500).json({
     success: false,
-    message: process.env.NODE_ENV === 'development' ? err.stack : 'Internal server error',
+    message:
+      process.env.NODE_ENV === "development"
+        ? err.stack
+        : "Internal server error",
   });
 });
 
@@ -76,7 +79,7 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
   try {
     await connectDB(DBURL);
-    logger.info('MongoDB connected successfully');
+    logger.info("MongoDB connected successfully");
     app.listen(PORT, () => {
       logger.info(`Server running on port ${PORT}`);
     });
