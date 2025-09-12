@@ -41,7 +41,7 @@ const PostSection = () => {
         {posts.map((post) => (
           <div
             key={post._id}
-            onClick={handleNavigateToPost(post._id)}
+            onClick={()=>handleNavigateToPost(post._id)}
             className="w-full p-4 min-h-28 bg-slate-700 rounded-xl flex items-center gap-4 shadow-md hover:shadow-lg transition duration-300 cursor-pointer hover:bg-gradient-to-r hover:from-purple-600 hover:to-indigo-600"
           >
             {post.image && (
