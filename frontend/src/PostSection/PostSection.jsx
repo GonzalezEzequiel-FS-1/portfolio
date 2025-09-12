@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Text } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
+const DBURL = "/api/blog/";
 const PostSection = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+  const handleNavigateToPost = async (postID) => {
+    const selectedPost = await axios.get(DBURL, {
+      params: {
+        id: postID,
+      },
+    });
+    const postData = selectedPost.data;
+    console.log(JSON.stringify(postData));
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch("/api/blog/all"); // backend route
+        const res = await fetch("/api/blog/all");
         const data = await res.json();
         if (data.success) {
           setPosts(data.data);
@@ -31,7 +41,7 @@ const PostSection = () => {
         {posts.map((post) => (
           <div
             key={post._id}
-            onClick={() => navigate(`/post/${post._id}`)}
+            onClick={handleNavigateToPost(post._id)}
             className="w-full p-4 min-h-28 bg-slate-700 rounded-xl flex items-center gap-4 shadow-md hover:shadow-lg transition duration-300 cursor-pointer hover:bg-gradient-to-r hover:from-purple-600 hover:to-indigo-600"
           >
             {post.image && (
@@ -42,9 +52,7 @@ const PostSection = () => {
                     : `/uploads/${post.image}`
                 }
                 alt={
-                  post.title.length > 10
-                    ? post.title.slice(0, 10)
-                    : post.title
+                  post.title.length > 10 ? post.title.slice(0, 10) : post.title
                 }
                 className="w-20 h-20 object-cover rounded-md flex-shrink-0"
               />

@@ -93,6 +93,24 @@ const getAllPosts = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getLatestPost, getAllPosts };
-
-
+const getSelectedBlog = async (req, res) => {
+  const id = req.params.id;
+  if(!id){
+    return res.status(401).json({
+      success:false,
+      error:"No ID sent"
+    })
+  }
+  try {
+    return res.status(200).json({
+      success: true,
+      data: id,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};
+module.exports = { createPost, getLatestPost, getAllPosts, getSelectedBlog };

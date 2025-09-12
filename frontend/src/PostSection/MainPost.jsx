@@ -17,7 +17,7 @@ const MainPost = () => {
   useEffect(() => {
     const fetchLatestPost = async () => {
       try {
-        const { data } = await axios.get("/api/blog"); // <-- your backend route
+        const { data } = await axios.get("/api/blog");
         if (data.success) {
           setPost(data.data);
         }

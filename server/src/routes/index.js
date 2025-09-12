@@ -7,6 +7,7 @@ const {
   createPost,
   getLatestPost,
   getAllPosts,
+  getSelectedBlog
 } = require("../controllers/postController");
 
 const router = express.Router();
@@ -30,6 +31,7 @@ router.route("/contact").post(createContact);
 router.get("/contact", getContact);
 
 router.route("/blog").post(createPost).get(getLatestPost);
+router.get("blog/:id", getSelectedBlog);
 
 router.route("/blog/all").get(getAllPosts);
 

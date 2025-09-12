@@ -9,10 +9,14 @@ import TextEditor from "../components/textEditor/TextEditor";
 import { RiImageCircleFill } from "react-icons/ri";
 import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
+import { auth } from "../../firebaseAuth";
 
 const DBURL = "/api/blog";
 
 const AdminPanel = () => {
+  const userAuth = auth;
+  const user = userAuth.currentUser;
+  const displayName = user?.displayName || "";
   const [opened, { open, close }] = useDisclosure(false);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -27,7 +31,7 @@ const AdminPanel = () => {
       image: null,
       postedDate: new Date(),
       content: "",
-      author: "",
+      author: displayName,
     },
     validate: {
       title: (value) => (value === "" ? "Title is required" : null),
@@ -62,9 +66,9 @@ const AdminPanel = () => {
       const payload = {
         title: values.title,
         subtitle: values.subtitle,
-        body: values.content, // assuming JSON from editor
+        body: values.content,
         postedDate: dayjs(values.postedDate).format("YYYY-MM-DD HH:mm:ss"),
-        author: "admin", // or from auth context
+        author: values.author || displayName,
         image: base64Image,
       };
 
@@ -130,7 +134,6 @@ const AdminPanel = () => {
             onChange={(val) => form.setFieldValue("content", val)}
           />
         </div>
-
         <Modal
           centered
           opened={opened}
