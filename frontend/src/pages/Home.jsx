@@ -36,14 +36,10 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
         <Features />
       </section>
 
-      <section
-        id="about"
-        className="w-screen flex items-center justify-center scroll-smooth"
-      >
-        <AboutMe />
+      <section className="flex justify-center px-0 lg:px-20 xl:px-36 2xl:px-60">
+        <Specializations />
       </section>
-
-      <section className="w-screen flex items-center justify-center overflow-x-hidden">
+      <section className="w-screen  flex-col flex items-center justify-center overflow-x-hidden">
         <SecondFeatures />
       </section>
 
@@ -52,7 +48,12 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
         className="scroll-smooth w-screen flex flex-col items-center justify-around"
       >
         <TechShuffle />
-        <Specializations />
+      </section>
+      <section
+        id="about"
+        className="w-screen flex items-center justify-center scroll-smooth"
+      >
+        <AboutMe />
       </section>
 
       <section
@@ -60,7 +61,6 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
         className="w-screen flex flex-col items-center justify-around"
       >
         <ContactForm />
-        <Footer />
       </section>
     </div>
   );

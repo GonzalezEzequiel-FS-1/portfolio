@@ -19,7 +19,7 @@ const Footer = () => {
   const hoverColor = "white";
 
   return (
-    <footer className="w-full bg-gray-900/30 px-12 py-2 flex items-center justify-center text-center flex-col gap-8">
+    <footer className="w-full bg-gray-900/30 px-12 py-2 flex items-center justify-center text-center flex-col gap-0">
       {/* Contact & Socials */}
       <div className="md:w-8/12 flex flex-col items-center gap-2">
         <p className="text-lg font-medium tracking-tight text-gray-200">
@@ -29,7 +29,7 @@ const Footer = () => {
           Web Developer | Problem Solver | Creator
         </p>
 
-        <Group spacing="lg" center mt={4}>
+        <Group spacing="lg" center mt={4} mb={3}>
           <Anchor
             href="mailto:youremail@example.com"
             className={`flex items-center gap-2 text-${primaryColor} hover:text-${hoverColor}`}

@@ -46,7 +46,7 @@ const Login = () => {
         await signInWithEmailAndPassword(auth, values.email, values.password);
       }
       // After successful login/signup, navigate to admin
-      navigate("/admin");
+      navigate("/blogpost");
     } catch (err) {
       setError(err.message);
     }

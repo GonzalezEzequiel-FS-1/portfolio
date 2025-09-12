@@ -30,7 +30,7 @@ const features = [
 
 const SecondFeatures = () => {
   return (
-    <div className="w-screen">
+    <div className="w-screen p-5 md:p-0">
       <SecondFeatureCard
         titleOne={features[0].title}
         subOne={features[0].sub}

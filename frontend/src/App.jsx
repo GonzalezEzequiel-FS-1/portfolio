@@ -1,44 +1,31 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import NavigationBar from "./components/NavigationBar";
-import BlogPage from "./pages/BlogPage";
-import Login from "./pages/Login";
 import { AuthProvider } from "./auth/useAuth";
+
+import UserLayout from "./RouteLayouts/UserLayout";
+import Home from "./pages/Home";
+import BlogPage from "../src/pages/BlogPage";
+import Login from "./pages/Login";
 import AdminPanel from "./AdminPanel/AdminPanel";
 import PrivateRoute from "./PrivateRoutes/PrivateRoute";
-import Footer from "./components/footer/Footer";
+import AdminLayout from "./RouteLayouts/AdminLayout";
 
 const App = () => {
-  const homeRef = useRef(null);
-  const [scrollY, setScrollY] = useState(0);
-
-  const scrollToTop = () => {
-    homeRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <Router>
       <AuthProvider>
-        <div className="bg-slate-950 min-h-screen flex flex-col justify-start w-screen overflow-x-hidden">
-          {/* Pass scroll container ref */}
-          <NavigationBar scrollY={scrollY} scrollToTop={scrollToTop} />
-
+        <div className="bg-slate-950 min-h-screen flex flex-col w-screen overflow-x-hidden">
           <Routes>
-            <Route
-              path="/"
-              element={<Home ref={homeRef} onScrollChange={setScrollY} />}
-            />
-            <Route path="/blogs" element={<BlogPage />} />
+            {/* User-facing pages */}
+            <Route element={<UserLayout />}>
+              <Route path="*" element={<Home />} />
+              <Route path="/blogs" element={<BlogPage />} />
+            </Route>
+
+            {/* Admin pages */}
+            <Route element={<AdminLayout />} />
             <Route path="/login" element={<Login />} />
-            <Route
-              path="/admin"
-              element={
-                <PrivateRoute>
-                  <AdminPanel />
-                </PrivateRoute>
-              }
-            />
+            <Route path="/blogpost" element={<AdminPanel />} />
           </Routes>
         </div>
       </AuthProvider>

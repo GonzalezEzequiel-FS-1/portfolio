@@ -23,7 +23,9 @@ const AboutMe = () => {
         <Text
           size={{ base: "md", sm: "lg" }}
           align="justify"
-          style={{ maxWidth: "100%" }}
+          style={{ maxWidth: "80%",
+            textAlign:"justify"
+          }}
         >
           I’m <strong>Ezequiel Gonzalez</strong>, a versatile and results-driven
           Web Developer, embedded systems enthusiast, and creative problem

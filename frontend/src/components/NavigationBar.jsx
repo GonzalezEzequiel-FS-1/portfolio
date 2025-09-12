@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const menuItems = [
   { name: "Features", link: "#featuresOne" },
@@ -15,6 +16,7 @@ const menuItems = [
 ];
 
 const NavigationBar = () => {
+  const navigate = useNavigate();
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -28,10 +30,21 @@ const NavigationBar = () => {
       return;
     }
 
-    const el = document.querySelector(link);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    if (link.startsWith("#")) {
+      // in-page section scroll
+      const el = document.querySelector(link);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+      return;
     }
+
+    if (link.includes("/home")) {
+      // route + hash
+      navigate(link);
+      return;
+    }
+
+    // plain route (no hash)
+    navigate(link);
   };
 
   useEffect(() => {
