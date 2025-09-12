@@ -1,85 +1,63 @@
 import { Anchor, Button } from "@mantine/core";
-import { motion } from "framer-motion";
-import FormModal from "./modal/FormModal";
-import { useMemo } from "react";
-
-const NUM_FIREFLIES = 30;
+import { motion, AnimatePresence } from "framer-motion";
+import FirefliesBackground from "./FirefliesBackground";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
-  // Memoize fireflies so they are generated only once
-  const fireflies = useMemo(() => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+  const items = [
+    { text: "Download My Resume", link: "/Docs/EzequielGonzalezResume.pdf" },
+    { text: "Read my blog", link: "/blogs" }
+  ];
 
-    return Array.from({ length: NUM_FIREFLIES }).map(() => {
-      const size = Math.random() * 4 + 2;
-      const startX = Math.random() * width;
-      const startY = Math.random() * height;
-      const endX = startX + (Math.random() * 200 - 100);
-      const endY = startY + (Math.random() * 200 - 100);
-      const duration = Math.random() * 6 + 4;
-      const delay = Math.random() * 5;
-      const color = `rgba(255,255,${200 + Math.random() * 50},${
-        0.6 + Math.random() * 0.2
-      })`;
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-      return { size, startX, startY, endX, endY, duration, delay, color };
-    });
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % items.length);
+    }, 3500);
+    return () => clearInterval(interval);
   }, []);
+
+  // Animation variants for sliding text
+  const slideVariants = {
+    enter: { x: 50, opacity: 0, filter: "blur(6px)" },
+    center: {
+      x: 0,
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: { duration: 0.6, type: "spring", stiffness: 120 },
+    },
+    exit: {
+      x: -50,
+      opacity: 0,
+      filter: "blur(6px)",
+      transition: { duration: 0.5 },
+    },
+  };
 
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {/* Fireflies */}
-      <div className="absolute top-0 left-0 w-full h-screen pointer-events-none">
-        {fireflies.map((f, i) => (
-          <motion.div
-            key={i}
-            initial={{ x: f.startX, y: f.startY, opacity: 0 }}
-            animate={{
-              x: [f.startX, f.endX, f.startX],
-              y: [f.startY, f.endY, f.startY],
-              opacity: [0, 0.8, 0],
-              scale: [0.75, 0.5, 0.75],
-            }}
-            transition={{
-              duration: f.duration,
-              delay: f.delay,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-            }}
-            style={{
-              width: f.size,
-              height: f.size,
-              borderRadius: "50%",
-              backgroundColor: f.color,
-              position: "absolute",
-              boxShadow: "0 0 8px 2px rgba(255,255,220,0.5)",
-            }}
-          />
-        ))}
-      </div>
+      <FirefliesBackground />
 
-      {/* Hero Content */}
-      <motion.div
-        initial={{ filter: "blur(10px)" }}
-        animate={{ filter: "none" }}
-        transition={{ duration: 1 }}
-        className="relative z-10 flex flex-col items-center text-center gap-6 px-4"
-      >
+      <div className="relative z-10 flex flex-col items-center text-center gap-6 px-4">
         <motion.h1
-          initial={{ filter: "blur(10px)" }}
-          animate={{ filter: "none" }}
-          transition={{ delay: 0.2, duration: 2 }}
+          initial={{ filter: "blur(12px)", scale: 0.95 }}
+          animate={{ filter: "blur(0px)", scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="text-7xl md:text-8xl font-black text-stone-200 font-tomorrow text-glow"
         >
           EG<span className="text-indigo-400">Web</span>Dev
         </motion.h1>
 
         <motion.h2
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.4, duration: 1 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 1,
+            type: "spring",
+            stiffness: 120,
+          }}
           className="text-xl md:text-2xl text-stone-400 font-average mt-2 max-w-xl"
         >
           Practical Web Solutions, Powerful Results
@@ -88,40 +66,61 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 1 }}
-          className="flex gap-6 mt-6"
+          transition={{
+            delay: 0.6,
+            duration: 1,
+            type: "spring",
+            stiffness: 100,
+          }}
+          className="flex gap-6 mt-6 flex-col items-center"
         >
-          <div className="flex flex-col gap-6">
-            <div className="flex gap-3">
-              <Button
-                onClick={() =>
-                  window.open(
-                    "https://github.com/GonzalezEzequiel-FS-1",
-                    "_blank"
-                  )
-                }
-                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-105 transition-transform w-1/2"
-              >
-                See my Work
-              </Button>
+          <div className="flex gap-3 flex-wrap justify-center">
+            <Button
+              onClick={() =>
+                window.open(
+                  "https://github.com/GonzalezEzequiel-FS-1",
+                  "_blank"
+                )
+              }
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-110 hover:shadow-2xl transition-transform duration-300"
+            >
+              See my Work
+            </Button>
 
-              <Button
-                onClick={() => {
-                  const contactSection = document.getElementById("contact");
-                  if (contactSection)
-                    contactSection.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-105 transition-transform w-1/2"
+            <Button
+              onClick={() => {
+                const contactSection = document.getElementById("contact");
+                if (contactSection)
+                  contactSection.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-110 hover:shadow-2xl transition-transform duration-300"
+            >
+              Contact Me
+            </Button>
+          </div>
+
+          {/* Sliding Anchor Carousel */}
+          <div className="relative h-10 flex items-center justify-center mt-3 w-64">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                className="absolute"
               >
-                Contact Me
-              </Button>
-            </div>
-            <Anchor href="/Docs/EzequielGonzalezResume.pdf">
-              Download My Resume
-            </Anchor>
+                <Anchor
+                  href={items[currentIndex].link}
+                  className="text-white underline font-semibold text-lg md:text-xl hover:text-indigo-400 hover:scale-105 transition-transform duration-300"
+                >
+                  {items[currentIndex].text}
+                </Anchor>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "@mantine/form";
-import { Button, TextInput, PasswordInput, Text } from "@mantine/core";
+import { Button, TextInput, PasswordInput, Text, Group } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import FirefliesBackground from "../components/FirefliesBackground";
 import {
@@ -11,6 +11,7 @@ import {
 import { useAuth } from "../auth/useAuth";
 
 const Login = () => {
+  const nav = useNavigate();
   const { user } = useAuth();
   const navigate = useNavigate();
   const [signup, setSignup] = useState(false);
@@ -51,7 +52,9 @@ const Login = () => {
       setError(err.message);
     }
   };
-
+  useEffect(() => {
+    if (user) navigate("/blogpost");
+  }, [user, navigate]);
   return (
     <div className="w-screen h-screen flex items-center justify-center relative">
       <FirefliesBackground />
@@ -91,15 +94,24 @@ const Login = () => {
         >
           {signup ? "Sign Up" : "Sign In"}
         </Button>
-
-        <Button
-          variant="light"
-          color="gray"
-          size="sm"
-          onClick={() => setSignup((prev) => !prev)}
-        >
-          {signup ? "Already have an account?" : "Don't have an account?"}
-        </Button>
+        <Group justify="center">
+          <Button
+            fullWidth
+            variant="light"
+            color="gray"
+            onClick={() => setSignup((prev) => !prev)}
+          >
+            {signup ? "Already have an account?" : "Don't have an account?"}
+          </Button>
+          <Button
+            size="xs"
+            onClick={() => nav("/")}
+            variant="outline"
+            color="red"
+          >
+            Go Back
+          </Button>
+        </Group>
       </form>
     </div>
   );
