@@ -36,11 +36,11 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
         <Features />
       </section>
 
-      <section className="flex justify-center px-0 lg:px-20 xl:px-36 2xl:px-60">
-        <Specializations />
-      </section>
       <section className="w-screen  flex-col flex items-center justify-center overflow-x-hidden">
         <SecondFeatures />
+      </section>
+      <section className="flex justify-center px-0 lg:px-20 xl:px-36 2xl:px-60">
+        <Specializations />
       </section>
 
       <section
