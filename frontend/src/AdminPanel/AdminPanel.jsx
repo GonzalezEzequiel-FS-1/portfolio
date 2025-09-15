@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../auth/useAuth";
+import { useAuth } from "../auth/UseAuth";
 import { useNavigate } from "react-router-dom";
 import { Button, FileInput, TextInput, Modal, Loader } from "@mantine/core";
 import { DateTimePicker } from "@mantine/dates";
@@ -16,7 +16,7 @@ const DBURL = "/api/blog";
 const AdminPanel = () => {
   const userAuth = auth;
   const user = userAuth.currentUser;
-  const displayName = user?.displayName || "";
+  const displayName = user?.displayName || "Didnt work";
   const [opened, { open, close }] = useDisclosure(false);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -56,6 +56,7 @@ const AdminPanel = () => {
   };
 
   const handleSubmit = async (values) => {
+    console.log("Testing Submit");
     setLoading(true);
     try {
       let base64Image = null;
@@ -68,10 +69,11 @@ const AdminPanel = () => {
         subtitle: values.subtitle,
         body: values.content,
         postedDate: dayjs(values.postedDate).format("YYYY-MM-DD HH:mm:ss"),
-        author: values.author || displayName,
+        author: values.author || user.displayName,
         image: base64Image,
+        user: user.displayName,
       };
-
+      console.log(payload);
       const response = await axios.post(DBURL, payload);
       console.log("Server response:", response.data);
 
@@ -97,6 +99,7 @@ const AdminPanel = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center gap-4 p-4">
+      <button onClick={() => console.log(user.displayName)}>ClickME</button>
       <h1 className="text-xl font-bold">Admin Panel</h1>
 
       <form

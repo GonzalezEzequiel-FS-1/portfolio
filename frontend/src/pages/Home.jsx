@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from "react";
+import React, { forwardRef, useContext, useEffect } from "react";
 import Hero from "../components/Hero";
 import AboutMe from "../components/AboutMe/AboutMe";
 import ContactForm from "../components/forms/ContactForm";
@@ -8,6 +8,8 @@ import TechShuffle from "../components/carousel/CarouselComponent.jsx";
 import Specializations from "../components/AboutMe/Specializations.jsx";
 import SecondFeatures from "../components/Features/SecondFeatures.jsx";
 import { motion } from "framer-motion";
+import { Button } from "@mantine/core";
+import { ThemeContext } from "../Theming/mantineColorScheme.jsx";
 
 const Home = forwardRef(({ onScrollChange }, ref) => {
   useEffect(() => {

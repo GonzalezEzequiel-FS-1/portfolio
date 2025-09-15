@@ -2,18 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Text } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-const DBURL = "/api/blog/";
+import { usePost } from "../../context/PostContext";
+const DBURL = "/api/blog/post/";
 const PostSection = () => {
+  const { setSelectedPost, selectedPost } = usePost();
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+
   const handleNavigateToPost = async (postID) => {
-    const selectedPost = await axios.get(DBURL, {
-      params: {
-        id: postID,
-      },
-    });
-    const postData = selectedPost.data;
-    console.log(JSON.stringify(postData));
+    //console.log(postID);
+
+    const selected = await axios.get(`${DBURL}${postID}`);
+    //console.log(selected.data.data);
+
+    const postData = selected.data.data;
+    setSelectedPost(postData);
+    if (postData) {
+      navigate(`/blogs/${postID}`);
+    }
   };
 
   useEffect(() => {
@@ -41,7 +47,7 @@ const PostSection = () => {
         {posts.map((post) => (
           <div
             key={post._id}
-            onClick={()=>handleNavigateToPost(post._id)}
+            onClick={() => handleNavigateToPost(post._id)}
             className="w-full p-4 min-h-28 bg-slate-700 rounded-xl flex items-center gap-4 shadow-md hover:shadow-lg transition duration-300 cursor-pointer hover:bg-gradient-to-r hover:from-purple-600 hover:to-indigo-600"
           >
             {post.image && (

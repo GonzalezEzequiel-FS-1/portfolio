@@ -7,8 +7,9 @@ import {
   auth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  updateProfile,
 } from "../../firebaseAuth";
-import { useAuth } from "../auth/useAuth";
+import { useAuth } from "../auth/UseAuth";
 
 const Login = () => {
   const nav = useNavigate();
@@ -21,6 +22,7 @@ const Login = () => {
     initialValues: {
       email: "",
       password: "",
+      userName: "",
     },
     validate: {
       email: (value) =>
@@ -30,31 +32,40 @@ const Login = () => {
     },
   });
 
-  // Redirect logged-in users to AdminPanel if desired
-  useEffect(() => {}, [user, navigate]);
-
   const handleSubmit = async (values) => {
     setError(""); // Reset error on submit
-
     try {
       if (signup) {
-        await createUserWithEmailAndPassword(
+        // Capture the UserCredential response
+        const cred = await createUserWithEmailAndPassword(
           auth,
           values.email,
           values.password
         );
+
+        // Update the displayName
+        await updateProfile(cred.user, {
+          displayName: values.userName,
+        });
+
+        // Reload user so AuthProvider picks up the updated profile
+        await cred.user.reload();
       } else {
         await signInWithEmailAndPassword(auth, values.email, values.password);
       }
+
       // After successful login/signup, navigate to admin
       navigate("/blogpost");
     } catch (err) {
       setError(err.message);
     }
   };
+
+  // Auto-redirect if already logged in
   useEffect(() => {
     if (user) navigate("/blogpost");
   }, [user, navigate]);
+
   return (
     <div className="w-screen h-screen flex items-center justify-center relative">
       <FirefliesBackground />
@@ -65,6 +76,12 @@ const Login = () => {
         <div className="text-2xl font-bold text-white font-tomorrow tracking-wide text-center">
           EG<span className="text-indigo-400">Web</span>Dev
         </div>
+        <TextInput
+          withAsterisk
+          label="User Name"
+          placeholder="Create a User Name"
+          {...form.getInputProps("userName")}
+        />
 
         <TextInput
           withAsterisk

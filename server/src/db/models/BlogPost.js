@@ -35,6 +35,10 @@ const BlogPostSchema = new Schema(
       type: String,
       default: null,
     },
+    user: {
+      type: String,
+      default: null,
+    },
   },
   { timestamps: true }
 );

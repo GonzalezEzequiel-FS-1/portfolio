@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./auth/useAuth";
+import { AuthProvider } from "./auth/UseAuth";
 
 import UserLayout from "./RouteLayouts/UserLayout";
 import Home from "./pages/Home";
@@ -10,40 +10,48 @@ import AdminPanel from "./AdminPanel/AdminPanel";
 import PrivateRoute from "./PrivateRoutes/PrivateRoute";
 import AdminLayout from "./RouteLayouts/AdminLayout";
 import PostLayout from "./RouteLayouts/PostLayout";
+import { ThemeContext } from "./Theming/mantineColorScheme";
+import IndividualPost from "./pages/IndividualPost";
+import { PostProvider } from "../context/PostContext";
 
 const App = () => {
+  const { bg } = useContext(ThemeContext);
   return (
     <Router>
       <AuthProvider>
-        <div className="bg-slate-950 min-h-screen flex flex-col w-screen overflow-x-hidden">
-          <Routes>
-            {/* User-facing pages */}
-            <Route element={<UserLayout />}>
-              <Route path="/" element={<Home />} />
-              {/* other user pages that need navbar */}
-            </Route>
+        <PostProvider>
+          <div
+            className={`${bg} min-h-screen flex flex-col w-screen overflow-x-hidden`}
+          >
+            <Routes>
+              {/* User-facing pages */}
+              <Route element={<UserLayout />}>
+                <Route path="/" element={<Home />} />
+              </Route>
 
-            {/* Admin pages (no navbar) */}
-            <Route element={<AdminLayout />}>
-              <Route path="/login" element={<Login />} />
-            </Route>
-            {/* Protected admin pages */}
-            <Route element={<PrivateRoute />}>
-              <Route path="/blogpost" element={<AdminPanel />} />
-            </Route>
+              {/* Admin pages */}
+              <Route element={<AdminLayout />}>
+                <Route path="/login" element={<Login />} />
+              </Route>
 
-            {/* Blog pages (if you want a separate layout) */}
-            <Route element={<PostLayout />}>
-              <Route path="/blogs" element={<BlogPage />} />
-            </Route>
+              {/* Protected admin pages */}
+              <Route element={<PrivateRoute />}>
+                <Route path="/blogpost" element={<AdminPanel />} />
+              </Route>
 
-            {/* Fallback */}
-            <Route path="*" element={<Home />} />
-          </Routes>
-        </div>
+              {/* Blog pages */}
+              <Route element={<PostLayout />}>
+                <Route path="/blogs" element={<BlogPage />} />
+                <Route path="/blogs/:id" element={<IndividualPost />} />
+              </Route>
+
+              {/* Fallback */}
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </div>
+        </PostProvider>
       </AuthProvider>
     </Router>
   );
 };
-
 export default App;

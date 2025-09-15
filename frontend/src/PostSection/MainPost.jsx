@@ -1,6 +1,5 @@
 import { Divider, Text, Group, Loader, Center } from "@mantine/core";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { generateHTML } from "@tiptap/html";
 import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
@@ -9,27 +8,10 @@ import Superscript from "@tiptap/extension-superscript";
 import Subscript from "@tiptap/extension-subscript";
 import Link from "@tiptap/extension-link";
 import dayjs from "dayjs";
+import { usePost } from "../../context/PostContext";
 
 const MainPost = () => {
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchLatestPost = async () => {
-      try {
-        const { data } = await axios.get("/api/blog");
-        if (data.success) {
-          setPost(data.data);
-        }
-      } catch (err) {
-        console.error("Error fetching latest post:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchLatestPost();
-  }, []);
+  const { post, loading } = usePost(); // ✅ use context instead of local state
 
   if (loading) {
     return (
@@ -47,7 +29,6 @@ const MainPost = () => {
     );
   }
 
-  // Convert stored JSON (TipTap content) into HTML for rendering
   const extensions = [
     StarterKit,
     Link,
@@ -63,22 +44,16 @@ const MainPost = () => {
 
   return (
     <section className="transition-all duration-500 ease-in-out w-screen lg:h-screen px-10 lg:mx-6 bg-slate-900/40 rounded-xl p-6 text-white shadow-lg z-10 overflow-y-auto">
-      {/* Blog Title */}
       <Text
         size="3rem"
         fw={900}
         variant="gradient"
         gradient={{ from: "violet", to: "blue", deg: 110 }}
-        styles={{
-          root: {
-            padding: "0 0 1rem 0",
-          },
-        }}
+        styles={{ root: { padding: "0 0 1rem 0" } }}
       >
         {post.title}
       </Text>
 
-      {/* Date + Author */}
       <Group className="mt-2 text-sm text-gray-200">
         <Text>Published:</Text>
         <Text>{dayjs(post.postedDate).format("ddd, MMM D YYYY")}</Text>
@@ -87,7 +62,6 @@ const MainPost = () => {
 
       <Divider className="my-4" />
 
-      {/* Featured Image */}
       {post.image && (
         <div className="w-full h-80 bg-blue-700 flex items-center justify-center mt-6 shadow-2xl rounded-lg z-10">
           <img
@@ -104,7 +78,6 @@ const MainPost = () => {
 
       <Divider className="my-6" />
 
-      {/* Blog Body */}
       <div
         className="prose prose-invert max-w-none text-lg"
         dangerouslySetInnerHTML={{ __html: bodyHTML }}

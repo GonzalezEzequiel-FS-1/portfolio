@@ -1,18 +1,19 @@
 const BlogPost = require("../db/models/BlogPost");
 
 const createPost = async (req, res) => {
-  const { title, subtitle, body, postedDate, author, image } = req.body;
-
-  if (!title || !subtitle || !body || !postedDate || !author) {
+  const { title, subtitle, body, postedDate, author, image, user } = req.body;
+  console.log(req.body);
+  if (!title || !subtitle || !body || !postedDate || !author || !user) {
     return res.status(401).json({
       success: false,
-      error: `Incomplete Data received. Title: ${
-        title || "Not received"
-      }, subtitle: ${subtitle || "Not received"}, body: ${
-        body || "Not received"
-      }, post date: ${postedDate || "Not received"}, author: ${
-        author || "Not received"
-      }`,
+      error: `Incomplete Data received.
+      Title: ${title || "Not received"},
+      subtitle: ${subtitle || "Not received"},
+      body: ${body || "Not received"},
+      post date: ${postedDate || "Not received"},
+      author: ${author || "Not received"},
+      user: ${user || "Not Received"}
+      `,
     });
   }
 
@@ -23,7 +24,8 @@ const createPost = async (req, res) => {
       body,
       postedDate,
       author,
-      image: image || null, // store Base64 string if provided
+      image: image || null,
+      user,
     };
 
     console.log("Creating post:", postData);
@@ -47,7 +49,7 @@ const getLatestPost = async (req, res) => {
   try {
     const latestPost = await BlogPost.findOne().sort({ createdAt: -1 });
     // Or use { postedDate: -1 } if you want to sort by the scheduled publish date
-
+    console.log("Before first if");
     if (!latestPost) {
       return res.status(404).json({
         success: false,
@@ -56,6 +58,7 @@ const getLatestPost = async (req, res) => {
     }
 
     return res.status(200).json({
+      route: "Get Latest Post",
       success: true,
       data: latestPost,
     });
@@ -81,6 +84,7 @@ const getAllPosts = async (req, res) => {
     }
 
     return res.status(200).json({
+      route: "Get All Post",
       success: true,
       data: posts,
     });
@@ -95,16 +99,24 @@ const getAllPosts = async (req, res) => {
 
 const getSelectedBlog = async (req, res) => {
   const id = req.params.id;
-  if(!id){
+  if (!id) {
     return res.status(401).json({
-      success:false,
-      error:"No ID sent"
-    })
+      success: false,
+      error: "No ID sent",
+    });
   }
   try {
+    const requestedPost = await BlogPost.findById(id);
+    if (!requestedPost) {
+      return res.status(404).json({
+        success: false,
+        message: "Post Not Found",
+      });
+    }
     return res.status(200).json({
+      route: "Get Selected Post",
       success: true,
-      data: id,
+      data: requestedPost,
     });
   } catch (err) {
     return res.status(500).json({

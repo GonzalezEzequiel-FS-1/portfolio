@@ -1,5 +1,5 @@
 import React from "react";
-import { Anchor, Group, Text, Button } from "@mantine/core";
+import { Anchor, Group, Text, Button, Container } from "@mantine/core";
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -21,14 +21,21 @@ const Footer = () => {
   return (
     <footer className="w-full bg-gray-900/30 px-12 py-2 flex items-center justify-center text-center flex-col gap-0">
       {/* Contact & Socials */}
-      <div className="md:w-8/12 flex flex-col items-center gap-2">
-        <p className="text-lg font-medium tracking-tight text-gray-200">
+      <Container className="md:w-8/12 flex flex-col items-center gap-2">
+        <Text
+          classNames={{
+            root: "text-lg font-medium tracking-tight text-gray-200",
+          }}
+        >
           Ezequiel Gonzalez
-        </p>
-        <p className={`text-sm text-${secondaryColor}`}>
+        </Text>
+        <Text
+          classNames={{
+            root: `text-sm text-${secondaryColor}`,
+          }}
+        >
           Web Developer | Problem Solver | Creator
-        </p>
-
+        </Text>
         <Group spacing="lg" center mt={4} mb={3}>
           <Anchor
             href="mailto:youremail@example.com"
@@ -45,33 +52,45 @@ const Footer = () => {
             href="tel:+14078643595"
             className={`flex items-center gap-2 text-${primaryColor} hover:text-${hoverColor}`}
           >
-            <div className="flex flex-col items-center justify-center">
+            <Container
+              classNames={{
+                root: "flex flex-col items-center justify-center",
+              }}
+            >
               <FaPhone />
-              <p>(407) 864-3595</p>
-            </div>
+              <Text>(407) 864-3595</Text>
+            </Container>
           </Anchor>
           <Anchor
             href="https://linkedin.com/in/ezequielgonzalezhidalgo"
             target="_blank"
             className={`flex items-center gap-2 text-${primaryColor} hover:text-${hoverColor}`}
           >
-            <div className="flex flex-col items-center justify-center">
+            <Container
+              classNames={{
+                root: "flex flex-col items-center justify-center",
+              }}
+            >
               <FaLinkedin />
-              <p>LinkedIn</p>
-            </div>
+              <Text>LinkedIn</Text>
+            </Container>
           </Anchor>
           <Anchor
             href="https://github.com/GonzalezEzequiel-FS-1"
             target="_blank"
             className={`flex items-center gap-2 text-${primaryColor} hover:text-${hoverColor}`}
           >
-            <div className="flex flex-col items-center justify-center">
+            <Container
+              classNames={{
+                root: "flex flex-col items-center justify-center",
+              }}
+            >
               <FaGithub />
-              <p>GitHub</p>
-            </div>
+              <Text>GitHub</Text>
+            </Container>
           </Anchor>
         </Group>
-      </div>
+      </Container>
 
       <div className="flex flex-col gap-0 leading-0">
         <Button
