@@ -7,6 +7,7 @@ import Features from "../components/Features/Features";
 import TechShuffle from "../components/carousel/CarouselComponent.jsx";
 import Specializations from "../components/AboutMe/Specializations.jsx";
 import SecondFeatures from "../components/Features/SecondFeatures.jsx";
+import { motion } from "framer-motion";
 
 const Home = forwardRef(({ onScrollChange }, ref) => {
   useEffect(() => {
@@ -29,16 +30,30 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
     >
       <Hero />
 
-      <section
+      <motion.section
         id="featuresOne"
         className="w-screen flex items-center justify-center"
+        initial={{ opacity: 0, x: 100 }} // start off-screen right
+        whileInView={{ opacity: 1, x: 0 }} // fade in + slide in
+        exit={{ opacity: 0, x: 100 }} // fade out + slide right
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.3 }} // triggers on enter AND exit
       >
         <Features />
-      </section>
+      </motion.section>
 
-      <section className="w-screen  flex-col flex items-center justify-center overflow-x-hidden">
+      <motion.section
+        id="featuresTwo"
+        className="w-screen flex-col flex items-center justify-center overflow-x-hidden"
+        initial={{ opacity: 0, x: -100 }} // start off-screen left
+        whileInView={{ opacity: 1, x: 0 }} // fade in + slide into place
+        exit={{ opacity: 0, x: -100 }} // fade out + slide left
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.3 }} // trigger on enter and exit
+      >
         <SecondFeatures />
-      </section>
+      </motion.section>
+
       <section className="flex justify-center mb-10 items-center px-0 lg:px-20 xl:px-36 2xl:px-60">
         <Specializations />
       </section>
