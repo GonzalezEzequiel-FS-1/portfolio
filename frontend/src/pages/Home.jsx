@@ -67,13 +67,6 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
         <TechShuffle />
       </section>
       <section
-        id="about"
-        className="w-screen flex items-center justify-center scroll-smooth"
-      >
-        <AboutMe />
-      </section>
-
-      <section
         id="contact"
         className="w-screen flex flex-col items-center justify-around"
       >
