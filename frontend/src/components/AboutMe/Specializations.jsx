@@ -1,9 +1,16 @@
 import { Text } from "@mantine/core";
 import React from "react";
-
+import { motion, AnimatePresence } from "framer-motion";
 const Specializations = () => {
   return (
-    <div className=" flex flex-col justify-around items-center gap-1 md:w-3/5 w-3/4 mt-10 text-center">
+    <motion.div
+      initial={{ opacity: 0, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, filter: "none" }}
+      transition={{ duration: 1.2, ease: "easeInOut" }}
+      
+      exit={{ opacity: 0, filter: "blur(10px)" }}
+      className=" flex flex-col justify-around items-center gap-1 md:w-3/5 w-3/4 mt-10 text-center"
+    >
       <Text
         styles={{
           root: {
@@ -24,7 +31,7 @@ const Specializations = () => {
         applications. From frontend frameworks to backend solutions, I craft
         end-to-end experiences that meet both user and business needs.
       </Text>
-    </div>
+    </motion.div>
   );
 };
 

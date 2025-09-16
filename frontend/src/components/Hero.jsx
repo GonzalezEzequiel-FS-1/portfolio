@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 export default function Hero() {
   const items = [
     { text: "Download My Resume", link: "/Docs/EzequielGonzalezResume.pdf" },
-    { text: "Read my blog", link: "/blogs" }
+    { text: "Read my blog", link: "/blogs" },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,7 +43,7 @@ export default function Hero() {
         <motion.h1
           initial={{ filter: "blur(12px)", scale: 0.95 }}
           animate={{ filter: "blur(0px)", scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           className="text-7xl md:text-8xl font-black text-stone-200 font-tomorrow text-glow"
         >
           EG<span className="text-indigo-400">Web</span>Dev

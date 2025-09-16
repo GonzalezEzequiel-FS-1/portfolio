@@ -32,29 +32,19 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
     >
       <Hero />
 
-      <motion.section
+      <section
         id="featuresOne"
         className="w-screen flex items-center justify-center"
-        initial={{ opacity: 0, x: 100 }} // start off-screen right
-        whileInView={{ opacity: 1, x: 0 }} // fade in + slide in
-        exit={{ opacity: 0, x: 100 }} // fade out + slide right
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        viewport={{ once: false, amount: 0.3 }} // triggers on enter AND exit
       >
         <Features />
-      </motion.section>
+      </section>
 
-      <motion.section
+      <section
         id="featuresTwo"
         className="w-screen flex-col flex items-center justify-center overflow-x-hidden"
-        initial={{ opacity: 0, x: -100 }} // start off-screen left
-        whileInView={{ opacity: 1, x: 0 }} // fade in + slide into place
-        exit={{ opacity: 0, x: -100 }} // fade out + slide left
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        viewport={{ once: false, amount: 0.3 }} // trigger on enter and exit
       >
         <SecondFeatures />
-      </motion.section>
+      </section>
 
       <section className="flex justify-center mb-10 items-center px-0 lg:px-20 xl:px-36 2xl:px-60">
         <Specializations />
