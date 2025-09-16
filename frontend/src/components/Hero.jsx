@@ -7,6 +7,7 @@ export default function Hero() {
   const items = [
     { text: "Download My Resume", link: "/Docs/EzequielGonzalezResume.pdf" },
     { text: "Read my blog", link: "/blogs" },
+    { text: "Learn more about me", link:"/about"}
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
