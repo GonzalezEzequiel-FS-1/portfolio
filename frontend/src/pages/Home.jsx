@@ -11,8 +11,10 @@ import { Button } from "@mantine/core";
 import { ThemeContext } from "../Theming/mantineColorScheme.jsx";
 import Specializations from "../components/Specialization/Specializations.jsx";
 import AboutMe from "./AboutMe.jsx";
+import { useLocation } from "react-router-dom";
 
 const Home = forwardRef(({ onScrollChange }, ref) => {
+  const location = useLocation();
   useEffect(() => {
     const scrollEl = ref?.current;
     if (!scrollEl) return;
@@ -25,6 +27,13 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
     scrollEl.addEventListener("scroll", handleScroll);
     return () => scrollEl.removeEventListener("scroll", handleScroll);
   }, [ref, onScrollChange]);
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const el = document.querySelector(location.state.scrollTo);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location.state]);
 
   return (
     <div

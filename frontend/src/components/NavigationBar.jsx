@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const menuItems = [
   { name: "Features", link: "#featuresOne" },
@@ -10,12 +10,13 @@ const menuItems = [
     link: "https://github.com/GonzalezEzequiel-FS-1",
     external: true,
   },
-  { name: "About Me", link: "#about" },
+  { name: "About Me", link: "/about" },
   { name: "Contact Me", link: "#contact" },
   { name: "CV", link: "/Docs/EzequielGonzalezResume.pdf", external: true },
 ];
 
 const NavigationBar = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -31,14 +32,27 @@ const NavigationBar = () => {
     }
 
     if (link.startsWith("#")) {
-      // in-page section scroll
       const el = document.querySelector(link);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+
+      if (el) {
+        // If the element exists on the current page, scroll to it
+        el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // If not on the homepage, navigate there and pass the section to scroll to
+        navigate("/", { state: { scrollTo: link } });
+      }
+
       return;
     }
 
-    if (link.includes("/home")) {
+    if (link.includes("/")) {
       // route + hash
+
+      console.log(
+        `From ForwardSlash function ${link}, Location ${JSON.stringify(
+          location
+        )}`
+      );
       navigate(link);
       return;
     }
