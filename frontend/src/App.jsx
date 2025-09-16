@@ -13,6 +13,8 @@ import PostLayout from "./RouteLayouts/PostLayout";
 import { ThemeContext } from "./Theming/mantineColorScheme";
 import IndividualPost from "./pages/IndividualPost";
 import { PostProvider } from "../context/PostContext";
+import AboutMe from "./pages/AboutMe";
+
 
 const App = () => {
   const { bg } = useContext(ThemeContext);
@@ -27,6 +29,7 @@ const App = () => {
               {/* User-facing pages */}
               <Route element={<UserLayout />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/about" element={<AboutMe />} />
               </Route>
 
               {/* Admin pages */}

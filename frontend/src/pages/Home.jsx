@@ -1,15 +1,16 @@
-import React, { forwardRef, useContext, useEffect } from "react";
+import React, { forwardRef, useEffect } from "react";
 import Hero from "../components/Hero";
-import AboutMe from "../components/AboutMe/AboutMe";
 import ContactForm from "../components/forms/ContactForm";
 import Footer from "../components/footer/Footer";
 import Features from "../components/Features/Features";
 import TechShuffle from "../components/carousel/CarouselComponent.jsx";
-import Specializations from "../components/AboutMe/Specializations.jsx";
 import SecondFeatures from "../components/Features/SecondFeatures.jsx";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { Button } from "@mantine/core";
 import { ThemeContext } from "../Theming/mantineColorScheme.jsx";
+import Specializations from "../components/Specialization/Specializations.jsx";
+import AboutMe from "./AboutMe.jsx";
 
 const Home = forwardRef(({ onScrollChange }, ref) => {
   useEffect(() => {
