@@ -25,7 +25,7 @@ export default function FirefliesBackground() {
   }, []);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-screen pointer-events-none z-0">
+    <div className="absolute top-0 left-0 w-full h-screen pointer-events-none z-0 overflow-hidden">
       {fireflies.map((f, i) => (
         <motion.div
           key={i}

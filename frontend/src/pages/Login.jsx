@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "../../firebaseAuth";
 import { useAuth } from "../auth/UseAuth";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Login = () => {
   const nav = useNavigate();
@@ -67,70 +68,105 @@ const Login = () => {
   }, [user, navigate]);
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center relative">
-      <FirefliesBackground />
-      <form
-        onSubmit={form.onSubmit(handleSubmit)}
-        className="flex flex-col gap-4 p-6 bg-slate-800/80 rounded-2xl shadow-lg z-10"
-      >
-        <div className="text-2xl font-bold text-white font-tomorrow tracking-wide text-center">
-          EG<span className="text-indigo-400">Web</span>Dev
-        </div>
-        <TextInput
-          withAsterisk
-          label="User Name"
-          placeholder="Create a User Name"
-          {...form.getInputProps("userName")}
-        />
+    <AnimatePresence>
+      <div className="w-screen h-screen overflow-clip">
+        <FirefliesBackground />
 
-        <TextInput
-          withAsterisk
-          label="Email"
-          placeholder="abc@email.com"
-          {...form.getInputProps("email")}
-        />
-
-        <PasswordInput
-          withAsterisk
-          label="Password"
-          placeholder="Enter your password"
-          {...form.getInputProps("password")}
-        />
-
-        {error && (
-          <Text color="red" size="sm">
-            {error}
-          </Text>
-        )}
-
-        <Button
-          type="submit"
-          size="sm"
-          variant="gradient"
-          gradient={{ from: "violet", to: "cyan", deg: 133 }}
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          transition={{ duration: 1 }}
+          animate={{ opacity: 1, filter: "none" }}
+          exit={{ opacity: 0, filter: "blur(10px)" }}
+          className="w-screen h-screen flex items-center justify-center relative"
         >
-          {signup ? "Sign Up" : "Sign In"}
-        </Button>
-        <Group justify="center">
-          <Button
-            fullWidth
-            variant="light"
-            color="gray"
-            onClick={() => setSignup((prev) => !prev)}
+          <form
+            onSubmit={form.onSubmit(handleSubmit)}
+            className="flex flex-col gap-4 p-6 bg-slate-800/50 rounded-2xl shadow-lg z-10"
           >
-            {signup ? "Already have an account?" : "Don't have an account?"}
-          </Button>
-          <Button
-            size="xs"
-            onClick={() => nav("/")}
-            variant="outline"
-            color="red"
-          >
-            Go Back
-          </Button>
-        </Group>
-      </form>
-    </div>
+            <div className="text-2xl font-bold text-white font-tomorrow tracking-wide text-center">
+              EG<span className="text-indigo-400">Web</span>Dev
+            </div>
+
+            {signup ? (
+              <>
+                <TextInput
+                  classNames={{
+                    input: `bg-stone-400/50`,
+                  }}
+                  withAsterisk
+                  label="User Name"
+                  placeholder="Create a User Name"
+                  {...form.getInputProps("userName")}
+                />
+
+                <TextInput
+                  withAsterisk
+                  label="Email"
+                  placeholder="abc@email.com"
+                  {...form.getInputProps("email")}
+                />
+
+                <PasswordInput
+                  withAsterisk
+                  label="Password"
+                  placeholder="Enter your password"
+                  {...form.getInputProps("password")}
+                />
+              </>
+            ) : (
+              <>
+                <TextInput
+                  withAsterisk
+                  label="Email"
+                  placeholder="abc@email.com"
+                  {...form.getInputProps("email")}
+                />
+
+                <PasswordInput
+                  withAsterisk
+                  label="Password"
+                  placeholder="Enter your password"
+                  {...form.getInputProps("password")}
+                />
+              </>
+            )}
+
+            {error && (
+              <Text color="red" size="sm">
+                {error}
+              </Text>
+            )}
+
+            <Button
+              type="submit"
+              size="sm"
+              variant="gradient"
+              gradient={{ from: "violet", to: "cyan", deg: 133 }}
+            >
+              {signup ? "Sign Up" : "Sign In"}
+            </Button>
+            <Group justify="center">
+              <Button
+                fullWidth
+                variant="light"
+                color="gray"
+                onClick={() => setSignup((prev) => !prev)}
+              >
+                {signup ? "Already have an account?" : "Don't have an account?"}
+              </Button>
+              <Button
+                size="xs"
+                onClick={() => nav("/")}
+                variant="outline"
+                color="red"
+              >
+                Go Back
+              </Button>
+            </Group>
+          </form>
+        </motion.div>
+      </div>
+    </AnimatePresence>
   );
 };
 
