@@ -25,6 +25,17 @@ const NavigationBar = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+const scrollToTopOrHome = () => {
+  if (location.pathname === "/") {
+    // Already on homepage → just scroll up
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    // Navigate to homepage
+    navigate("/", { state: { scrollTo: "#top" } }); 
+  }
+};
+
+  
   const handleClick = (link, external) => {
     if (external) {
       window.open(link, "_blank", "noopener noreferrer");
@@ -84,7 +95,7 @@ const NavigationBar = () => {
     <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4">
       {/* Logo always visible */}
       <div
-        onClick={scrollToTop}
+        onClick={scrollToTopOrHome}
         className="text-2xl font-bold text-white font-tomorrow tracking-wide cursor-pointer"
       >
         EG<span className="text-indigo-400">Web</span>Dev
