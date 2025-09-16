@@ -2,7 +2,7 @@ import { Text, Container, Stack, Tabs } from "@mantine/core";
 import React from "react";
 
 const PanelText = ({ children }) => (
-  <Text size="lg" className="text-center w-full bg-red-400">
+  <Text size="lg" className="text-center w-full">
     {children}
   </Text>
 );
