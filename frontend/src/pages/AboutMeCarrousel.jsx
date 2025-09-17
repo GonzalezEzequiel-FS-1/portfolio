@@ -1,5 +1,7 @@
 import { Text, Container, Button } from "@mantine/core";
 import React, { useState } from "react";
+
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { FaDotCircle, FaRegDotCircle } from "react-icons/fa";
 

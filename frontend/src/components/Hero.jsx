@@ -7,7 +7,7 @@ export default function Hero() {
   const items = [
     { text: "Download My Resume", link: "/Docs/EzequielGonzalezResume.pdf" },
     { text: "Read my blog", link: "/blogs" },
-    { text: "Learn more about me", link:"/about"}
+    { text: "Learn more about me", link: "/about" },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,12 +40,12 @@ export default function Hero() {
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       <FirefliesBackground />
 
-      <div className="relative z-10 flex flex-col items-center text-center gap-6 px-4">
+      <div className="transition-all duration-150 ease-in-out relative z-10 flex flex-col items-center text-center gap-2 sm:gap-6 mt-6 sm:mt-4">
         <motion.h1
           initial={{ filter: "blur(12px)", scale: 0.95 }}
           animate={{ filter: "blur(0px)", scale: 1 }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="text-7xl md:text-8xl font-black text-stone-200 font-tomorrow text-glow"
+          className="transition-all duration-200 ease-in-out text-6xl md:text-8xl font-black text-stone-200 font-tomorrow text-glow"
         >
           EG<span className="text-indigo-400">Web</span>Dev
         </motion.h1>
@@ -59,7 +59,7 @@ export default function Hero() {
             type: "spring",
             stiffness: 120,
           }}
-          className="text-xl md:text-2xl text-stone-400 font-average mt-2 max-w-xl"
+          className="md:text-2xl text-stone-400 font-average mt-2 max-w-xl"
         >
           Practical Web Solutions, Powerful Results
         </motion.h2>

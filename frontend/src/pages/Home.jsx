@@ -7,7 +7,7 @@ import TechShuffle from "../components/carousel/CarouselComponent.jsx";
 import SecondFeatures from "../components/Features/SecondFeatures.jsx";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { Button } from "@mantine/core";
+import { Button, Container } from "@mantine/core";
 import { ThemeContext } from "../Theming/mantineColorScheme.jsx";
 import Specializations from "../components/Specialization/Specializations.jsx";
 import AboutMe from "./AboutMeCarrousel.jsx";

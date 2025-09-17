@@ -5,12 +5,12 @@ import {
   SiTailwindcss,
   SiJavascript,
   SiNodedotjs,
-  SiExpress,
+  SiMantine,
   SiMongodb,
-  SiPostgresql,
   SiDocker,
   SiGithub,
   SiFramer,
+  SiArduino,
 } from "react-icons/si";
 import { Divider, Text } from "@mantine/core";
 
@@ -19,9 +19,9 @@ const technologies = [
   { name: "Tailwind CSS", icon: <SiTailwindcss size={48} color="#06B6D4" /> },
   { name: "JavaScript", icon: <SiJavascript size={48} color="#F7DF1E" /> },
   { name: "Node.js", icon: <SiNodedotjs size={48} color="#339933" /> },
-  { name: "Express.js", icon: <SiExpress size={48} color="#FFFFFF" /> },
+  { name: "Mantine UI", icon: <SiMantine size={48} color="#00aeff" /> },
   { name: "MongoDB", icon: <SiMongodb size={48} color="#47A248" /> },
-  { name: "PostgreSQL", icon: <SiPostgresql size={48} color="#336791" /> },
+  { name: "Arduino", icon: <SiArduino size={48} color="#00979C" /> },
   { name: "Docker", icon: <SiDocker size={48} color="#2496ED" /> },
   { name: "GitHub", icon: <SiGithub size={48} color="#777777" /> },
   { name: "Framer Motion", icon: <SiFramer size={48} color="#0055FF" /> },
