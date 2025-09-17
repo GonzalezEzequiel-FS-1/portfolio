@@ -34,11 +34,14 @@ const AboutMe = () => {
         </Text> */}
 
           <div className="flex h-full flex-col md:flex-row items-center md:items-start gap-8">
-            <img
-              src="/Imgs/croppedImage.jpg"
-              alt="Zeke Gonzalez"
-              className="transition-all duration-200 ease-in-out rounded-lg max-w-[250px] md:max-w-[320px] lg:max-w-[400px] md:mt-5 h-auto"
-            />
+            <div className="mask-linear-225 mask-linear-from-80% mask-linear-to-80%">
+              <img
+                src="/Imgs/croppedImage.jpg"
+                alt="Zeke Gonzalez"
+                className="transition-all duration-200 ease-in-out rounded-lg max-w-[250px] md:max-w-[320px] lg:max-w-[400px] md:mt-5 h-auto mask-linear-45 mask-linear-from-80% mask-linear-to-80%"
+              />
+            </div>
+
             <AboutMeCarousel />
           </div>
         </Container>
