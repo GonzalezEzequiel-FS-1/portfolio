@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 
 const sendEmailNotification = async (contactData) => {
   const { firstName, lastName, email, message, phone } = contactData;
-  const sentData = { firstName, lastName, email, message, phone };
+  const sentData = { firstName, lastName, email, message};
   console.log(
     `SentData:${sentData}, ENVs:${process.env.EMAIL_PASS},${process.env.EMAIL_USER}`
   );
@@ -40,3 +40,4 @@ const sendEmailNotification = async (contactData) => {
 };
 
 module.exports = sendEmailNotification;
+

@@ -21,7 +21,7 @@ const ContactMe = () => {
     initialValues: {
       contactName: "",
       contactLastName: "",
-      phoneNumber: "",
+
       email: "",
       message: "",
     },
@@ -35,7 +35,7 @@ const ContactMe = () => {
   const phoneProps = form.getInputProps("phoneNumber");
   const handleFormSubmit = async (values) => {
     try {
-      await axios.post(DBURL, {
+      await axios.post("/api/contact", {
         firstName: values.contactName,
         lastName: values.contactLastName,
         email: values.email,
@@ -139,7 +139,7 @@ const ContactMe = () => {
           }}
           {...form.getInputProps("email")}
         />
-        <TextField
+        {/* <TextField
           label="Phone:"
           description="Please provide your phone number."
           placeholder="123-456-7890"
@@ -159,7 +159,7 @@ const ContactMe = () => {
               target: { ...e.target, value: formatted },
             });
           }}
-        />
+        /> */}
 
         <MultiLineTextInput
           label="Message"

@@ -2,9 +2,9 @@ const Contact = require("../db/models/Contact");
 const sendEmailNotification = require("../utils/emailSender");
 
 const createContact = async (req, res) => {
-  const { firstName, lastName, email, message, phone } = req.body;
+  const { firstName, lastName, email, message } = req.body;
 
-  if (!firstName || !lastName || !email || !message || !phone) {
+  if (!firstName || !lastName || !email || !message) {
     return res
       .status(400)
       .json({ success: false, error: "Contact Data not provided" });
@@ -15,7 +15,6 @@ const createContact = async (req, res) => {
       firstName,
       lastName,
       email,
-      phone,
       message,
     });
 
