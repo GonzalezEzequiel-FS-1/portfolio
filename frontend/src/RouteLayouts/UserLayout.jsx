@@ -6,7 +6,7 @@ import Footer from "../components/footer/Footer";
 //import { FooterLinks } from "../components/footer/FooterNew";
 const UserLayout = () => {
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between">
       <NavigationBar />
       <main>
         <Outlet />

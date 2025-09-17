@@ -25,16 +25,17 @@ const NavigationBar = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const scrollToTopOrHome = () => {
-    if (location.pathname === "/") {
-      // Already on homepage → just scroll up
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      // Navigate to homepage
-      navigate("/", { state: { scrollTo: "#top" } });
-    }
-  };
+const scrollToTopOrHome = () => {
+  if (location.pathname === "/") {
+    // Already on homepage → just scroll up
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    // Navigate to homepage
+    navigate("/", { state: { scrollTo: "#top" } }); 
+  }
+};
 
+  
   const handleClick = (link, external) => {
     if (external) {
       window.open(link, "_blank", "noopener noreferrer");
