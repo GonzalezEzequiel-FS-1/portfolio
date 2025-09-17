@@ -12,7 +12,7 @@ const AboutMe = () => {
     <Container
       size="lg"
       py={{ base: "4rem", md: "6rem" }}
-      className="transition-all duration-500 ease-in-out w-screen flex flex-col items-center justify-between"
+      className="transition-all duration-500 ease-in-out w-screen flex flex-col items-center justify-between h-screen"
     >
       <Stack spacing="2rem" align="center">
         <Text
