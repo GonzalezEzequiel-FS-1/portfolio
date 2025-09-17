@@ -2,7 +2,7 @@ const Contact = require("../db/models/Contact");
 const sendEmailNotification = require("../utils/emailSender");
 
 const createContact = async (req, res) => {
-  const { firstName, lastName, email, message } = req.body;
+  const { firstName, lastName, email, message, phone } = req.body;
 
   if (!firstName || !lastName || !email || !message || !phone) {
     return res
