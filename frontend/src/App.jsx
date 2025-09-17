@@ -14,7 +14,7 @@ import { ThemeContext } from "./Theming/mantineColorScheme";
 import IndividualPost from "./pages/IndividualPost";
 import { PostProvider } from "../context/PostContext";
 import AboutMe from "./pages/AboutMe";
-
+import ContactMe from "./pages/ContactMe";
 
 const App = () => {
   const { bg } = useContext(ThemeContext);
@@ -30,6 +30,7 @@ const App = () => {
               <Route element={<UserLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<AboutMe />} />
+                <Route path="/contact" element={<ContactMe />} />
               </Route>
 
               {/* Admin pages */}

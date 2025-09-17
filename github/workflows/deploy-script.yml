@@ -1,0 +1,63 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
+
+      - name: Deploy to Linode with automatic rollback
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+            set -e  # stop script on any failure
+
+            cd /var/www/portfolio
+
+            echo "Pulling latest code..."
+            git pull
+
+            echo "Backing up current frontend..."
+            if [ -d frontend ]; then
+              timestamp=$(date +%Y%m%d%H%M%S)
+              backup_dir="frontend_backup_$timestamp"
+              cp -r frontend "$backup_dir"
+              echo "Backup created: $backup_dir"
+            fi
+
+            echo "Building new frontend..."
+            cd frontend
+
+            # Attempt build and handle failures
+            if npm install && npm run build; then
+              echo "Build succeeded, reloading PM2..."
+              pm2 reload portfolio
+            else
+              echo "Build failed! Restoring last backup..."
+              cd ..
+              latest_backup=$(ls -td frontend_backup_* | head -1)
+              if [ -d "$latest_backup" ]; then
+                rm -rf frontend
+                mv "$latest_backup" frontend
+                echo "Restored backup: $latest_backup"
+                pm2 reload portfolio
+                echo "Rollback complete."
+              else
+                echo "No backup found! Site may be broken."
+                exit 1
+              fi
+            fi
+
+            echo "Deployment process finished."
+          EOF
