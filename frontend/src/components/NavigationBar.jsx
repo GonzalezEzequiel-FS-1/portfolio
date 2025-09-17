@@ -12,7 +12,7 @@ const menuItems = [
   },
   { name: "About Me", link: "/about" },
   { name: "Contact Me", link: "#contact" },
-  { name: "CV", link: "/Docs/EzequielGonzalezResume.pdf", external: true },
+  { name: "CV", link: "/Docs/EzequielGonzalezResume2025.pdf", external: true },
 ];
 
 const NavigationBar = () => {
@@ -25,17 +25,16 @@ const NavigationBar = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-const scrollToTopOrHome = () => {
-  if (location.pathname === "/") {
-    // Already on homepage → just scroll up
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  } else {
-    // Navigate to homepage
-    navigate("/", { state: { scrollTo: "#top" } }); 
-  }
-};
+  const scrollToTopOrHome = () => {
+    if (location.pathname === "/") {
+      // Already on homepage → just scroll up
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Navigate to homepage
+      navigate("/", { state: { scrollTo: "#top" } });
+    }
+  };
 
-  
   const handleClick = (link, external) => {
     if (external) {
       window.open(link, "_blank", "noopener noreferrer");
