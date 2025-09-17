@@ -8,10 +8,9 @@ const UserLayout = () => {
   return (
     <div className="flex flex-col justify-between">
       <NavigationBar />
-      <main>
+      <main id="top">
         <Outlet />
       </main>
-      <Footer />
     </div>
   );
 };

@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { Button } from "@mantine/core";
 import { ThemeContext } from "../Theming/mantineColorScheme.jsx";
 import Specializations from "../components/Specialization/Specializations.jsx";
-import AboutMe from "./AboutMe.jsx";
+import AboutMe from "./AboutMeCarrousel.jsx";
 import { useLocation } from "react-router-dom";
 
 const Home = forwardRef(({ onScrollChange }, ref) => {
@@ -72,6 +72,7 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
       >
         <ContactForm />
       </section>
+      <Footer />
     </div>
   );
 });
