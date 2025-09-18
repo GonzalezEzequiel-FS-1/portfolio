@@ -24,7 +24,7 @@ const PhoneNumberInput = ({
   return (
     <TextInput
       {...props}
-      description="Please provide your Phone Number"
+      description="Type your Phone Number"
       value={phone}
       onChange={handleChange}
       label={label}
