@@ -5,12 +5,11 @@ module.exports = {
       script: "./server.js",
       env: {
         PORT: 3000,
-        DBURL:
-          "mongodb+srv://djzekz_db_user:sGKvASiVoAaicvZu@contactdata.uscilbs.mongodb.net/?retryWrites=true&w=majority",
-        EMAIL_HOST: "smtp.gmail.com",
-        EMAIL_PORT: 465,
-        EMAIL_USER: "djzekz@gmail.com",
-        EMAIL_PASS: "lqrh cilv occd heba",
+        DBURL:process.env.DBURL,
+        EMAIL_HOST: process.env.EMAIL_HOST,
+        EMAIL_PORT: process.env.EMAIL_PORT,
+        EMAIL_USER: process.env.EMAIL_USER,
+        EMAIL_PASS: process.env.EMAIL_PASSWORD
       },
     },
   ],
