@@ -9,15 +9,15 @@ const transporter = nodemailer.createTransport({
   secure: true, // true for 465, false for 587
   auth: {
     user: process.env.EMAIL_USER,
-    pass: "snhx mmru tgte zenj",
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
 const sendEmailNotification = async (contactData) => {
   const { firstName, lastName, email, message, phone } = contactData;
-  const sentData = { firstName, lastName, email, message};
+  const sentData = { firstName, lastName, email, message };
   console.log(
-    `SentData:${sentData}, ENVs:${process.env.EMAIL_PASS},${process.env.EMAIL_USER}`
+    `SentData:${sentData}, ENVs:${process.env.EMAIL_PASSWORD},${process.env.EMAIL_USER}`
   );
   const mailOptions = {
     from: `"Contact Form" <${process.env.EMAIL_USER}>`,
@@ -40,4 +40,3 @@ const sendEmailNotification = async (contactData) => {
 };
 
 module.exports = sendEmailNotification;
-

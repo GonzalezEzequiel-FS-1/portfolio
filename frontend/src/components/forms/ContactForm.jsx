@@ -13,6 +13,7 @@ const ContactForm = () => {
     initialValues: {
       contactName: "",
       contactLastName: "",
+      phone: "",
       email: "",
       message: "",
     },
@@ -29,8 +30,10 @@ const ContactForm = () => {
         firstName: values.contactName,
         lastName: values.contactLastName,
         email: values.email,
+        phone: values.phone,
         message: values.message,
       });
+      console.log(`Submited Values: ${JSON.stringify(values)}`);
       form.reset();
       setNewAlert("Your message has been sent!");
     } catch (err) {
@@ -127,6 +130,20 @@ const ContactForm = () => {
             },
           }}
           {...form.getInputProps("email")}
+        />
+        <TextField
+          label="Phone:"
+          description="Please provide your phone number."
+          placeholder="123-456-7890"
+          styles={{
+            label: { fontSize: "1.25rem" },
+            input: {
+              backgroundColor: "#44444450",
+              fontWeight: 800,
+              letterSpacing: ".15rem",
+            },
+          }}
+          {...form.getInputProps("phone")}
         />
 
         <MultiLineTextInput

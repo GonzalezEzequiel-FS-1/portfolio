@@ -9,19 +9,12 @@ const DEVDBURL = "https://localhost:3000/api/contact";
 const ContactMe = () => {
   const [newAlert, setNewAlert] = useState("");
 
-  const formatPhoneNumber = (value) => {
-    const digits = value.replace(/\D/g, "");
-    if (digits.length <= 3) return digits;
-    if (digits.length <= 6) return `${digits.slice(0, 3)}-${digits.slice(3)}`;
-    return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
-  };
-
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
       contactName: "",
       contactLastName: "",
-
+      phone: "",
       email: "",
       message: "",
     },
@@ -32,17 +25,17 @@ const ContactMe = () => {
     },
   });
 
-  const phoneProps = form.getInputProps("phoneNumber");
   const handleFormSubmit = async (values) => {
     try {
-      await axios.post("/api/contact", {
-        firstName: values.contactName,
-        lastName: values.contactLastName,
-        email: values.email,
-        phone: values.phoneNumber,
-        message: values.message,
-      });
-      form.reset();
+      // await axios.post("/api/contact", {
+      //   firstName: values.contactName,
+      //   lastName: values.contactLastName,
+      //   email: values.email,
+      //   phone: values.phoneNumber,
+      //   message: values.message,
+      // });
+      // form.reset();
+      console.log(values);
       setNewAlert("Your message has been sent!");
     } catch (err) {
       console.error(err);
@@ -139,9 +132,10 @@ const ContactMe = () => {
           }}
           {...form.getInputProps("email")}
         />
-        {/* <TextField
+
+        <TextField
           label="Phone:"
-          description="Please provide your phone number."
+          description="Please provide your Phone number."
           placeholder="123-456-7890"
           styles={{
             label: { fontSize: "1.25rem" },
@@ -151,15 +145,8 @@ const ContactMe = () => {
               letterSpacing: ".15rem",
             },
           }}
-          value={phoneProps.value}
-          onChange={(e) => {
-            const formatted = formatPhoneNumber(e.target.value);
-            phoneProps.onChange({
-              ...e,
-              target: { ...e.target, value: formatted },
-            });
-          }}
-        /> */}
+          {...form.getInputProps("phone")}
+        />
 
         <MultiLineTextInput
           label="Message"
@@ -178,7 +165,7 @@ const ContactMe = () => {
 
         <div className="w-full flex justify-center mt-4">
           <Button type="submit" className="w-full sm:w-1/2">
-            Submit
+            Submittt
           </Button>
         </div>
       </form>
