@@ -15,9 +15,19 @@ const transporter = nodemailer.createTransport({
 
 const sendEmailNotification = async (contactData) => {
   const { firstName, lastName, email, message, phone } = contactData;
-  const sentData = { firstName, lastName, email, message };
+  const sentData = { firstName, lastName, email, message, phone };
+  if ((!firstName || !lastName || !email || !message, !phone)) {
+    console.error(
+      `Failed to receive expected data. Name: ${firstName} ${lastName}, phone ${phone}, Email ${email}, message ${message}`
+    );
+    return {
+      error: `Failed to receive expected data. Name: ${firstName} ${lastName}, phone ${phone}, Email ${email}, message ${message}`,
+    };
+  }
   console.log(
-    `SentData:${sentData}, ENVs:${process.env.EMAIL_PASSWORD},${process.env.EMAIL_USER}`
+    `SentData:${JSON.stringify(sentData)}, ENVs:${process.env.EMAIL_PASSWORD},${
+      process.env.EMAIL_USER
+    }, ${process.env.EMAIL_HOST}, ${process.env.EMAIL_PORT}`
   );
   const mailOptions = {
     from: `"Contact Form" <${process.env.EMAIL_USER}>`,

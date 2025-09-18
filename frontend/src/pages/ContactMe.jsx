@@ -1,11 +1,9 @@
 import { useForm } from "@mantine/form";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import TextField from "../components/fields/TextField";
-import MultiLineTextInput from "../components/fields/MultiLineTextInput.jsx";
+import TextField from "../components/fields/TextField.jsx";
+import MultiLineTextInput from "../components/fields/MultiLineTextInput.jsx.jsx";
 import { Button, Alert, Container, Text } from "@mantine/core";
-const DBURL = "/api/contact";
-const DEVDBURL = "https://localhost:3000/api/contact";
+import axios from "axios";
+import { useState, useEffect } from "react";
 const ContactMe = () => {
   const [newAlert, setNewAlert] = useState("");
 
@@ -26,16 +24,20 @@ const ContactMe = () => {
   });
 
   const handleFormSubmit = async (values) => {
+    if (values.length === 0 || !values) {
+      return { error: `Values not Received from form` };
+    }
     try {
-      // await axios.post("/api/contact", {
-      //   firstName: values.contactName,
-      //   lastName: values.contactLastName,
-      //   email: values.email,
-      //   phone: values.phoneNumber,
-      //   message: values.message,
-      // });
-      // form.reset();
-      console.log(values);
+      const sentData = await axios.post("/api/contact", {
+        firstName: values.contactName,
+        lastName: values.contactLastName,
+        email: values.email,
+        phone: values.phone,
+        message: values.message,
+      });
+      console.log(`Submited Values: ${JSON.stringify(sentData)}`);
+
+      //form.reset();
       setNewAlert("Your message has been sent!");
     } catch (err) {
       console.error(err);
@@ -132,10 +134,9 @@ const ContactMe = () => {
           }}
           {...form.getInputProps("email")}
         />
-
         <TextField
           label="Phone:"
-          description="Please provide your Phone number."
+          description="Please provide your phone number."
           placeholder="123-456-7890"
           styles={{
             label: { fontSize: "1.25rem" },
@@ -165,7 +166,7 @@ const ContactMe = () => {
 
         <div className="w-full flex justify-center mt-4">
           <Button type="submit" className="w-full sm:w-1/2">
-            Submittt
+            Submit
           </Button>
         </div>
       </form>
