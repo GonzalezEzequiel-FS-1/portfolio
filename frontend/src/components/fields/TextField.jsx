@@ -6,6 +6,17 @@ const TextField = (props) => {
     <>
       <TextInput
         {...props}
+        styles={{
+          label: { fontSize: "1.25rem" },
+          input: {
+            backgroundColor: "#44444450",
+            fontWeight: 800,
+            letterSpacing: ".15rem",
+          },
+        }}
+        classNames={{
+          root: "w-full lg:2/5",
+        }}
       />
     </>
   );

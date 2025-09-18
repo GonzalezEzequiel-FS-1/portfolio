@@ -6,16 +6,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Footer from "../components/footer/Footer.jsx";
 import PhoneNumberInput from "../components/fields/PhoneNumberInput.jsx";
-import { formatPhoneNumber } from "../utils/formatPhoneNumber.js";
 const ContactMe = () => {
   const [newAlert, setNewAlert] = useState("");
-
-  const [phone, setPhone] = useState("");
-
-  const handlePhoneChange = (e) => {
-    const formatted = formatPhoneNumber(e.target.value);
-    setPhone(formatted);
-  };
 
   const form = useForm({
     mode: "uncontrolled",
@@ -64,148 +56,114 @@ const ContactMe = () => {
   }, [newAlert]);
 
   return (
-    <div className="transition-all duration-500 ease-in-out flex flex-col lg:flex-row  items-center justify-center lg:justify-center gap-0 lg:gap-6 h-screen lg:p-2/4">
-      <div className="mb-8 lg:mb-0 lg:h-1/3 text-center max-w-2xl">
-        <Text
-          styles={{
-            root: {
-              textAlign: "center",
-              paddingBottom: "1rem",
-            },
-          }}
-          size={"3rem"}
-          fw={900}
-          variant="gradient"
-          gradient={{ from: "violet", to: "blue", deg: 202 }}
-        >
-          Let's get in Touch:
-        </Text>
-        <Text
-          size="lg"
-          color="gray.6"
-          styles={{
-            root: {
-              lineHeight: "1.75rem",
-              fontWeight: 500,
-              maxWidth: "25rem",
-              margin: "0 auto",
-            },
-          }}
-        >
-          We’d love to hear from you! Whether you have questions, suggestions,
-          or just want to say hello, fill out the form and we’ll get back to you
-          as quickly as possible. Your message matters, and we’re here to
-          listen.
-        </Text>
-      </div>
-      <div className="min-w-2xl">
-        {" "}
-        {newAlert && (
-          <Alert
-            color="green"
-            mb="1.5rem"
-            variant="filled"
-            radius="md"
-            style={{ width: "100%" }}
+    <div className="flex items-center justify-center h-screen px-4">
+      <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6  w-7xl">
+        <div className="text-center max-w-2xl">
+          <Text
+            styles={{
+              root: {
+                textAlign: "center",
+                paddingBottom: "1rem",
+              },
+            }}
+            size={"3rem"}
+            fw={900}
+            variant="gradient"
+            gradient={{ from: "violet", to: "blue", deg: 202 }}
           >
-            {newAlert}
-          </Alert>
-        )}
-        <form
-          className="w-full lg:max-w-2xl flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg"
-          onSubmit={form.onSubmit(handleFormSubmit)}
-        >
-          <section className="flex w-full lg:flex-row flex-col items-center justify-between lg:gap-6">
-            <TextField
-              label="First Name:"
-              description="Please provide your first name."
-              placeholder="Type your name"
-              styles={{
-                label: {
-                  fontSize: "1.25rem",
-                  fontWeight: 800,
-                  letterSpacing: ".15rem",
-                },
-                input: {
-                  backgroundColor: "#44444450",
-                  fontWeight: 800,
-                  letterSpacing: ".15rem",
-                },
-              }}
-              classNames={{
-                root: "w-full lg:2/5",
-              }}
-              {...form.getInputProps("contactName")}
-            />
+            Let's get in Touch:
+          </Text>
+          <Text
+            size="lg"
+            color="gray.6"
+            styles={{
+              root: {
+                lineHeight: "1.75rem",
+                fontWeight: 500,
+                maxWidth: "25rem",
+                margin: "0 auto",
+              },
+            }}
+          >
+            Looking to hire, contract services, or collaborate on a web project?
+            I’m ready to help bring your ideas to life. Whether it’s building a
+            new website, improving an existing project, or teaming up on a
+            creative idea, send me a message and let’s discuss how we can work
+            together.
+          </Text>
+        </div>
+        <div className="sm:min-w-2xl">
+          {" "}
+          {newAlert && (
+            <Alert
+              color="green"
+              mb="1.5rem"
+              variant="filled"
+              radius="md"
+              style={{ width: "100%" }}
+            >
+              {newAlert}
+            </Alert>
+          )}
+          <form
+            className="lg:max-w-2xl  flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg"
+            onSubmit={form.onSubmit(handleFormSubmit)}
+          >
+            <section className="flex w-full lg:flex-col items-center justify-between  gap-6">
+              <TextField
+                label="First Name:"
+                description="Please provide your first name."
+                placeholder="Type your name"
+                {...form.getInputProps("contactName")}
+              />
 
-            <TextField
-              label="Last Name:"
-              description="Please provide your last name."
-              placeholder="Type your last name"
-              styles={{
-                label: { fontSize: "1.25rem" },
-                input: {
-                  backgroundColor: "#44444450",
-                  fontWeight: 800,
-                  letterSpacing: ".15rem",
-                },
-              }}
-              classNames={{
-                root: "w-full lg:2/5",
-              }}
-              {...form.getInputProps("contactLastName")}
-            />
-          </section>
+              <TextField
+                label="Last Name:"
+                description="Please provide your last name."
+                placeholder="Type your last name"
+                {...form.getInputProps("contactLastName")}
+              />
+            </section>
 
-          <section className="transition-all duration-200 ease-in-out flex w-full items-center lg:flex-row flex-col justify-between lg:gap-6">
-            <TextField
-              label="Email:"
-              description="Please provide your email."
-              placeholder="abc@defg.com"
-              styles={{
-                label: { fontSize: "1.25rem" },
-                input: {
-                  backgroundColor: "#44444450",
-                  fontWeight: 800,
-                  letterSpacing: ".15rem",
-                },
-              }}
-              classNames={{
-                root: "w-full lg:2/5",
-              }}
-              {...form.getInputProps("email")}
-            />
+            <section className="flex w-full lg:flex-col items-center justify-between  gap-6">
+              <TextField
+                label="Email:"
+                description="Please provide your email."
+                placeholder="abc@defg.com"
+                {...form.getInputProps("email")}
+              />
 
-            <PhoneNumberInput
-              {...form.getInputProps("phone")}
-              onChange={(val) => form.setFieldValue("phone", val)}
-            />
-          </section>
-          <section>
-            <MultiLineTextInput
-              label="Message"
-              description="What would you like to let us know?"
-              minRows={6}
-              styles={{
-                label: { fontSize: "1.25rem" },
-                input: {
-                  backgroundColor: "#44444450",
-                  fontWeight: 800,
-                  letterSpacing: ".15rem",
-                },
-              }}
-              {...form.getInputProps("message")}
-            />
-          </section>
+              <PhoneNumberInput
+                {...form.getInputProps("phone")}
+                onChange={(val) => form.setFieldValue("phone", val)}
+              />
+            </section>
+            <section>
+              <MultiLineTextInput
+                label="Message"
+                description="What would you like to let us know?"
+                minRows={6}
+                styles={{
+                  label: { fontSize: "1.25rem" },
+                  input: {
+                    backgroundColor: "#44444450",
+                    fontWeight: 800,
+                    letterSpacing: ".15rem",
+                  },
+                }}
+                {...form.getInputProps("message")}
+              />
+            </section>
 
-          <div className="w-full flex justify-center mt-4">
-            <Button type="submit" className="w-full sm:w-1/2">
-              Submit
-            </Button>
-          </div>
-        </form>
+            <div className="flex justify-center mt-4">
+              <Button type="submit" className="sm:w-1/2">
+                Submit
+              </Button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div className="absolute w-screen bottom-0">
+      <div className="sr-only lg:not-sr-only  lg:absolute lg:w-screen lg:bottom-0">
         <Footer />
       </div>
     </div>
