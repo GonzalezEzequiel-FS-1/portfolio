@@ -58,7 +58,7 @@ const ContactMe = () => {
   return (
     <div className="flex items-center justify-center h-screen px-4">
       <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6  w-7xl">
-        <div className="text-center max-w-2xl">
+        <div className="sr-only md:not-sr-only md:text-center md:max-w-2xl">
           <Text
             styles={{
               root: {
