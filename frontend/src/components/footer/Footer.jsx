@@ -8,7 +8,7 @@ const Footer = () => {
     {
       icon: FaEnvelope,
       label: "Email",
-      href: "mailto:youremail@example.com",
+      href: "mailto:ezequiel.gonzalez@egwebdev.com",
     },
     {
       icon: FaPhone,
