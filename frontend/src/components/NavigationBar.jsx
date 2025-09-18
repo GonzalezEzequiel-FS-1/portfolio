@@ -21,10 +21,6 @@ const NavigationBar = () => {
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const scrollToTopOrHome = () => {
     if (location.pathname === "/") {
       // Already on homepage → just scroll up
