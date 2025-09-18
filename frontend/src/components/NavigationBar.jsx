@@ -11,7 +11,7 @@ const menuItems = [
     external: true,
   },
   { name: "About Me", link: "/about" },
-  { name: "Contact Me", link: "#contact" },
+  { name: "Contact Me", link: "/contact" },
   { name: "CV", link: "/Docs/EzequielGonzalezResume2025.pdf", external: true },
 ];
 

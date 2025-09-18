@@ -1,9 +1,10 @@
 import { useForm } from "@mantine/form";
 import TextField from "../components/fields/TextField.jsx";
 import MultiLineTextInput from "../components/fields/MultiLineTextInput.jsx.jsx";
-import { Button, Alert, Container, Text } from "@mantine/core";
+import { Button, Alert, Container, Text, Flex } from "@mantine/core";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Footer from "../components/footer/Footer.jsx";
 const ContactMe = () => {
   const [newAlert, setNewAlert] = useState("");
 
@@ -54,123 +55,163 @@ const ContactMe = () => {
   }, [newAlert]);
 
   return (
-    <Container size="lg" py={{ base: "3rem", md: "6rem" }} px="1rem">
-      <Text
-        styles={{
-          root: {
-            textAlign: "center",
-            paddingBottom: "1rem",
-          },
-        }}
-        size={"3rem"}
-        fw={900}
-        variant="gradient"
-        gradient={{ from: "violet", to: "blue", deg: 202 }}
-      >
-        Let's get in Touch:
-      </Text>
-
-      {newAlert && (
-        <Alert
-          color="green"
-          mb="1.5rem"
-          variant="filled"
-          radius="md"
-          style={{ width: "100%" }}
+    <div className="transition-all duration-500 ease-in-out flex flex-col lg:flex-row  items-center justify-center lg:justify-center gap-0 lg:gap-6 h-screen lg:p-2/4">
+      <div className="mb-8 lg:mb-0 lg:h-1/3 text-center max-w-2xl">
+        <Text
+          styles={{
+            root: {
+              textAlign: "center",
+              paddingBottom: "1rem",
+            },
+          }}
+          size={"3rem"}
+          fw={900}
+          variant="gradient"
+          gradient={{ from: "violet", to: "blue", deg: 202 }}
         >
-          {newAlert}
-        </Alert>
-      )}
-
-      <form
-        className="w-full max-w-2xl flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg"
-        onSubmit={form.onSubmit(handleFormSubmit)}
-      >
-        <TextField
-          label="First Name:"
-          description="Please provide your first name."
-          placeholder="Type your name"
+          Let's get in Touch:
+        </Text>
+        <Text
+          size="lg"
+          color="gray.6"
           styles={{
-            label: {
-              fontSize: "1.25rem",
-              fontWeight: 800,
-              letterSpacing: ".15rem",
-            },
-            input: {
-              backgroundColor: "#44444450",
-              fontWeight: 800,
-              letterSpacing: ".15rem",
+            root: {
+              lineHeight: "1.75rem",
+              fontWeight: 500,
+              maxWidth: "25rem",
+              margin: "0 auto",
             },
           }}
-          {...form.getInputProps("contactName")}
-        />
+        >
+          We’d love to hear from you! Whether you have questions, suggestions,
+          or just want to say hello, fill out the form and we’ll get back to you
+          as quickly as possible. Your message matters, and we’re here to
+          listen.
+        </Text>
+      </div>
+      <div className="min-w-2xl">
+        {" "}
+        {newAlert && (
+          <Alert
+            color="green"
+            mb="1.5rem"
+            variant="filled"
+            radius="md"
+            style={{ width: "100%" }}
+          >
+            {newAlert}
+          </Alert>
+        )}
+        <form
+          className="w-full lg:max-w-2xl flex flex-col gap-5 p-6 rounded-2xl border border-stone-600 shadow-lg"
+          onSubmit={form.onSubmit(handleFormSubmit)}
+        >
+          <section className="flex w-full lg:flex-row flex-col items-center justify-between lg:gap-6">
+            <TextField
+              label="First Name:"
+              description="Please provide your first name."
+              placeholder="Type your name"
+              styles={{
+                label: {
+                  fontSize: "1.25rem",
+                  fontWeight: 800,
+                  letterSpacing: ".15rem",
+                },
+                input: {
+                  backgroundColor: "#44444450",
+                  fontWeight: 800,
+                  letterSpacing: ".15rem",
+                },
+              }}
+              classNames={{
+                root: "w-full lg:2/5",
+              }}
+              {...form.getInputProps("contactName")}
+            />
 
-        <TextField
-          label="Last Name:"
-          description="Please provide your last name."
-          placeholder="Type your last name"
-          styles={{
-            label: { fontSize: "1.25rem" },
-            input: {
-              backgroundColor: "#44444450",
-              fontWeight: 800,
-              letterSpacing: ".15rem",
-            },
-          }}
-          {...form.getInputProps("contactLastName")}
-        />
+            <TextField
+              label="Last Name:"
+              description="Please provide your last name."
+              placeholder="Type your last name"
+              styles={{
+                label: { fontSize: "1.25rem" },
+                input: {
+                  backgroundColor: "#44444450",
+                  fontWeight: 800,
+                  letterSpacing: ".15rem",
+                },
+              }}
+              classNames={{
+                root: "w-full lg:2/5",
+              }}
+              {...form.getInputProps("contactLastName")}
+            />
+          </section>
 
-        <TextField
-          label="Email:"
-          description="Please provide your email."
-          placeholder="abc@defg.com"
-          styles={{
-            label: { fontSize: "1.25rem" },
-            input: {
-              backgroundColor: "#44444450",
-              fontWeight: 800,
-              letterSpacing: ".15rem",
-            },
-          }}
-          {...form.getInputProps("email")}
-        />
-        <TextField
-          label="Phone:"
-          description="Please provide your phone number."
-          placeholder="123-456-7890"
-          styles={{
-            label: { fontSize: "1.25rem" },
-            input: {
-              backgroundColor: "#44444450",
-              fontWeight: 800,
-              letterSpacing: ".15rem",
-            },
-          }}
-          {...form.getInputProps("phone")}
-        />
+          <section className="transition-all duration-200 ease-in-out flex w-full items-center lg:flex-row flex-col justify-between lg:gap-6">
+            <TextField
+              label="Email:"
+              description="Please provide your email."
+              placeholder="abc@defg.com"
+              styles={{
+                label: { fontSize: "1.25rem" },
+                input: {
+                  backgroundColor: "#44444450",
+                  fontWeight: 800,
+                  letterSpacing: ".15rem",
+                },
+              }}
+              classNames={{
+                root: "w-full lg:2/5",
+              }}
+              {...form.getInputProps("email")}
+            />
+            <TextField
+              label="Phone:"
+              description="Please provide your phone number."
+              placeholder="123-456-7890"
+              styles={{
+                label: { fontSize: "1.25rem" },
+                input: {
+                  backgroundColor: "#44444450",
+                  fontWeight: 800,
+                  letterSpacing: ".15rem",
+                },
+              }}
+              classNames={{
+                root: "w-full lg:2/5",
+              }}
+              {...form.getInputProps("phone")}
+            />
+          </section>
+          <section>
+            <MultiLineTextInput
+              label="Message"
+              description="What would you like to let us know?"
+              minRows={6}
+              styles={{
+                label: { fontSize: "1.25rem" },
+                input: {
+                  backgroundColor: "#44444450",
+                  fontWeight: 800,
+                  letterSpacing: ".15rem",
+                },
+              }}
+              {...form.getInputProps("message")}
+            />
+          </section>
 
-        <MultiLineTextInput
-          label="Message"
-          description="What would you like to let us know?"
-          minRows={6}
-          styles={{
-            label: { fontSize: "1.25rem" },
-            input: {
-              backgroundColor: "#44444450",
-              fontWeight: 800,
-              letterSpacing: ".15rem",
-            },
-          }}
-          {...form.getInputProps("message")}
-        />
-
-        <div className="w-full flex justify-center mt-4">
-          <Button type="submit" className="w-full sm:w-1/2">
-            Submit
-          </Button>
-        </div>
-      </form>
-    </Container>
+          <div className="w-full flex justify-center mt-4">
+            <Button type="submit" className="w-full sm:w-1/2">
+              Submit
+            </Button>
+          </div>
+        </form>
+      </div>
+      <div className="absolute w-screen bottom-0">
+        <Footer />
+      </div>
+    </div>
   );
 };
 
