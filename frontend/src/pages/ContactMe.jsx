@@ -1,12 +1,21 @@
 import { useForm } from "@mantine/form";
 import TextField from "../components/fields/TextField.jsx";
 import MultiLineTextInput from "../components/fields/MultiLineTextInput.jsx.jsx";
-import { Button, Alert, Container, Text, Flex } from "@mantine/core";
+import { Button, Alert, Container, Text, Flex, TextInput } from "@mantine/core";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Footer from "../components/footer/Footer.jsx";
+import PhoneNumberInput from "../components/fields/PhoneNumberInput.jsx";
+import { formatPhoneNumber } from "../utils/formatPhoneNumber.js";
 const ContactMe = () => {
   const [newAlert, setNewAlert] = useState("");
+
+  const [phone, setPhone] = useState("");
+
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setPhone(formatted);
+  };
 
   const form = useForm({
     mode: "uncontrolled",
@@ -166,22 +175,10 @@ const ContactMe = () => {
               }}
               {...form.getInputProps("email")}
             />
-            <TextField
-              label="Phone:"
-              description="Please provide your phone number."
-              placeholder="123-456-7890"
-              styles={{
-                label: { fontSize: "1.25rem" },
-                input: {
-                  backgroundColor: "#44444450",
-                  fontWeight: 800,
-                  letterSpacing: ".15rem",
-                },
-              }}
-              classNames={{
-                root: "w-full lg:2/5",
-              }}
+
+            <PhoneNumberInput
               {...form.getInputProps("phone")}
+              onChange={(val) => form.setFieldValue("phone", val)}
             />
           </section>
           <section>
