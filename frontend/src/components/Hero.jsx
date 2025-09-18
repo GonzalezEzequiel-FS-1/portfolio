@@ -2,8 +2,10 @@ import { Anchor, Button } from "@mantine/core";
 import { motion, AnimatePresence } from "framer-motion";
 import FirefliesBackground from "./FirefliesBackground";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const nav = useNavigate();
   const items = [
     { text: "Download My Resume", link: "/Docs/EzequielGonzalezResume.pdf" },
     { text: "Read my blog", link: "/blogs" },
@@ -90,9 +92,7 @@ export default function Hero() {
 
             <Button
               onClick={() => {
-                const contactSection = document.getElementById("contact");
-                if (contactSection)
-                  contactSection.scrollIntoView({ behavior: "smooth" });
+                nav("/contact");
               }}
               className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-110 hover:shadow-2xl transition-transform duration-300"
             >
