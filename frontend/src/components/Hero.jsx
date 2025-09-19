@@ -91,14 +91,14 @@ export default function Hero() {
               See my Work
             </Button>
 
-            <Button
+            {/* <Button
               onClick={() => {
                 nav("/contact");
               }}
               className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-full px-8 py-3 shadow-lg hover:scale-110 hover:shadow-2xl transition-transform duration-300"
             >
               Contact Me
-            </Button>
+            </Button> */}
             <FormModal />
           </div>
 

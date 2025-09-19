@@ -73,7 +73,7 @@ const ContactMe = () => {
         className="lg:max-w-2xl  flex flex-col gap-5"
         onSubmit={form.onSubmit(handleFormSubmit)}
       >
-        <section className="flex w-full items-center items-end justify-between gap-6">
+        <section className="flex w-full items-end justify-between gap-6">
           <TextField
             label="First Name:"
             description="Please provide your first name."

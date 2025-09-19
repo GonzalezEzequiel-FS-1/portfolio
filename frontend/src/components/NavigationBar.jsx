@@ -11,7 +11,6 @@ const menuItems = [
     external: true,
   },
   { name: "About Me", link: "/about" },
-  { name: "Contact Me", link: "/contact" },
   { name: "CV", link: "/Docs/EzequielGonzalezResume2025.pdf", external: true },
 ];
 
@@ -20,10 +19,6 @@ const NavigationBar = () => {
   const navigate = useNavigate();
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const scrollToTopOrHome = () => {
     if (location.pathname === "/") {
