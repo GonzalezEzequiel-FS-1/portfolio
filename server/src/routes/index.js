@@ -8,6 +8,8 @@ const {
   getLatestPost,
   getAllPosts,
   getSelectedBlog,
+  editSelectedBlog,
+  deleteSelectedBlog,
 } = require("../controllers/postController");
 
 const router = express.Router();
@@ -26,12 +28,13 @@ router.get("/test", (req, res) => {
   }
 });
 
-router.route("/contact").post(createContact);
-
-router.get("/contact", getContact);
-
+router.route("/contact").get(getContact).post(createContact);
 router.route("/blog").post(createPost).get(getLatestPost);
-router.get("/blog/post/:id", getSelectedBlog);
+router
+  .route("/blog/post/:id")
+  .get(getSelectedBlog)
+  .put(editSelectedBlog)
+  .delete(deleteSelectedBlog);
 
 router.route("/blog/all").get(getAllPosts);
 
