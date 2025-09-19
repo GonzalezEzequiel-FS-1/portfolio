@@ -1,6 +1,5 @@
 import React from "react";
 import { Text } from "@mantine/core";
-// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const features = [
@@ -39,7 +38,7 @@ const features = [
 const SecondFeatures = () => {
   return (
     <AnimatePresence>
-      <div className="w-full px-4 py-12 md:py-20 max-w-7xl mx-auto flex flex-col gap-12">
+      <div className="w-full px-4 py-12 md:py-20 max-w-7xl mx-auto flex flex-col">
         {/* Text Block */}
         <motion.div
           initial={{ opacity: 0, x: -100 }} // start off-screen right
@@ -47,7 +46,6 @@ const SecondFeatures = () => {
           exit={{ opacity: 0, x: -100 }} // fade out + slide right
           transition={{ duration: 1.2, ease: "easeInOut" }}
           viewport={{ once: false, amount: 0.3 }} // triggers on enter AND exit
-          className="w-full max-w-3xl mx-auto text-center px-4"
         >
           <Text
             styles={{ root: { textAlign: "center", paddingBottom: "1rem" } }}
@@ -67,7 +65,22 @@ const SecondFeatures = () => {
           >
             Building With You
           </Text>
-          <Text variant="dimmed" className="text-lg leading-relaxed">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          yoyo:Infinity
+          viewport={{ once: false, amount: 0.3 }}
+          className="max-w-xl mx-auto"
+        >
+          <Text
+            c="dimmed"
+            ta={"justify"}
+            pb="md"
+            className="text-lg leading-relaxed"
+          >
             Great digital experiences start with collaboration. We work closely
             with you to uncover your goals, define clear strategies, and build
             solutions that truly align with your vision. Our process emphasizes
@@ -80,9 +93,9 @@ const SecondFeatures = () => {
 
         {/* Horizontal Scroll Cards */}
         <motion.section
-          initial={{ opacity: 0, x: 100 }} // start off-screen right
-          whileInView={{ opacity: 1, x: 0 }} // fade in + slide in
-          exit={{ opacity: 0, x: 100 }} // fade out + slide right
+          initial={{ opacity: 0, y: 100 }} // start off-screen right
+          whileInView={{ opacity: 1, y: 0 }} // fade in + slide in
+          exit={{ opacity: 0, y: 100 }} // fade out + slide right
           transition={{ duration: 1.2, ease: "easeInOut" }}
           viewport={{ once: false, amount: 0.3 }} // triggers on enter AND exit
           className="flex overflow-x-auto overflow-y-clip gap-6 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent"

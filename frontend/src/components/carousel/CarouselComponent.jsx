@@ -50,7 +50,7 @@ export default function TechShuffle() {
   }, []);
 
   return (
-    <div className=" md:w-screen w-2/4 flex flex-col items-center justify-center">
+    <div className=" md:w-screen w-2/4 flex flex-col items-center justify-center max-w-2xl">
       <div className="text-center flex flex-col items-center justify-center">
         <Text
           styles={{

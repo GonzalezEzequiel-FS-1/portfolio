@@ -7,7 +7,7 @@ import TechShuffle from "../components/carousel/CarouselComponent.jsx";
 import SecondFeatures from "../components/Features/SecondFeatures.jsx";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { Button, Container } from "@mantine/core";
+import { Button, Container, Text } from "@mantine/core";
 import { ThemeContext } from "../Theming/mantineColorScheme.jsx";
 import Specializations from "../components/Specialization/Specializations.jsx";
 import AboutMe from "./AboutMeCarrousel.jsx";
@@ -42,30 +42,34 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
     >
       <Hero />
 
-      <section
-        id="featuresOne"
-        className="w-screen flex items-center justify-center"
-      >
-        <Features />
+      <section className="h-full">
+        <section
+          id="featuresOne"
+          className="w-screen flex items-center justify-center"
+        >
+          <Features />
+        </section>
+        <section
+          id="featuresTwo"
+          className="w-screen flex-col flex items-center justify-center overflow-x-hidden"
+        >
+          <SecondFeatures />
+        </section>
       </section>
 
-      <section
-        id="featuresTwo"
-        className="w-screen flex-col flex items-center justify-center overflow-x-hidden"
-      >
-        <SecondFeatures />
-      </section>
+      <div className="md:h-screen flex flex-col justify-around">
+        <section className="flex justify-center mb-10 items-center px-0 lg:px-20 xl:px-36 2xl:px-60">
+          <Specializations />
+        </section>
 
-      <section className="flex justify-center mb-10 items-center px-0 lg:px-20 xl:px-36 2xl:px-60">
-        <Specializations />
-      </section>
+        <section
+          id="carrousel"
+          className="scroll-smooth w-screen flex flex-col items-center justify-around mb-10"
+        >
+          <TechShuffle />
+        </section>
+      </div>
 
-      <section
-        id="carrousel"
-        className="scroll-smooth w-screen flex flex-col items-center justify-around"
-      >
-        <TechShuffle />
-      </section>
       {/* <section
         id="contact"
         className="w-screen flex flex-col items-center justify-around"

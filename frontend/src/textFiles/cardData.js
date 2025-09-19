@@ -1,9 +1,11 @@
+import uiux from "../../public/Imgs/uiux.jpg";
 export const showcaseCardContents = [
   {
     title: "Custom Web Solutions",
     subtitle:
       "Tailored applications that solve real problems for your business or personal projects.",
     color: "linear-gradient(to bottom right, #10b981, #84cc16)",
+    image:uiux
   },
   {
     title: "UI / UX Design",
@@ -28,11 +30,5 @@ export const showcaseCardContents = [
     subtitle:
       "A showcase of high-end web development projects with professional animations and responsive design.",
     color: "linear-gradient(to bottom right, #3b82f6, #06b6d4)",
-  },
-  {
-    title: "Coming Soon",
-    subtitle:
-      "Placeholder for future projects or client work with cutting-edge design",
-    color: "linear-gradient(to bottom right, #f43f5e, #ec4899, #a21caf)",
   },
 ];
