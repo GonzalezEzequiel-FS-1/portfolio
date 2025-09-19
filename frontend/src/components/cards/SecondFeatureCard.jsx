@@ -1,4 +1,5 @@
 import { Text } from "@mantine/core";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 

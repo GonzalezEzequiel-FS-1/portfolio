@@ -125,4 +125,39 @@ const getSelectedBlog = async (req, res) => {
     });
   }
 };
-module.exports = { createPost, getLatestPost, getAllPosts, getSelectedBlog };
+
+const deleteSelectedBlog = async (req, res) => {
+  const id = req.params.id;
+  if (!id) {
+    return res.status(401).json({
+      success: false,
+      error: "No ID sent",
+    });
+  }
+  try {
+    const requestedPost = await BlogPost.findByIdAndDelete(id);
+    if (!requestedPost) {
+      return res.status(404).json({
+        success: false,
+        message: "Post Not Found",
+      });
+    }
+    return res.status(200).json({
+      route: "Get Selected Post",
+      success: true,
+      data: requestedPost,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};
+module.exports = {
+  createPost,
+  getAllPosts,
+  getLatestPost,
+  getSelectedBlog,
+  deleteSelectedBlog,
+};
