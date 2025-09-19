@@ -65,7 +65,7 @@ const AdminPanel = () => {
       }
 
       const payload = {
-        userId:user.uid,
+        userId: user.uid,
         title: values.title,
         subtitle: values.subtitle,
         body: values.content,
@@ -100,7 +100,7 @@ const AdminPanel = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center gap-4 p-4">
-      <button onClick={() => console.log(user.uid)}>ClickME</button>
+      {/* <button onClick={() => console.log(user.uid)}>ClickME</button> */}
       <h1 className="text-xl font-bold">Admin Panel</h1>
 
       <form
