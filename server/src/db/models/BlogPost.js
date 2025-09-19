@@ -3,6 +3,9 @@ const { Schema } = mongoose;
 
 const BlogPostSchema = new Schema(
   {
+    userId: {
+      type: String,
+    },
     title: {
       type: String,
       required: true,

@@ -1,9 +1,12 @@
 const BlogPost = require("../db/models/BlogPost");
 
 const createPost = async (req, res) => {
-  const { title, subtitle, body, postedDate, author, image, user } = req.body;
+  const { userId, title, subtitle, body, postedDate, author, image, user } =
+    req.body;
   console.log(req.body);
-  if (!title || !subtitle || !body || !postedDate || !author || !user) {
+  if (
+    (!userId, !title || !subtitle || !body || !postedDate || !author || !user)
+  ) {
     return res.status(400).json({
       success: false,
       error: `Incomplete Data received.
@@ -19,6 +22,7 @@ const createPost = async (req, res) => {
 
   try {
     const postData = {
+      userId,
       title,
       subtitle,
       body,
