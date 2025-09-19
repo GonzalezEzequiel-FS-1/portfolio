@@ -4,7 +4,7 @@ const createPost = async (req, res) => {
   const { title, subtitle, body, postedDate, author, image, user } = req.body;
   console.log(req.body);
   if (!title || !subtitle || !body || !postedDate || !author || !user) {
-    return res.status(401).json({
+    return res.status(400).json({
       success: false,
       error: `Incomplete Data received.
       Title: ${title || "Not received"},
@@ -39,6 +39,7 @@ const createPost = async (req, res) => {
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({
+      route: "Create Post",
       success: false,
       error: err.message,
     });
@@ -100,7 +101,7 @@ const getAllPosts = async (req, res) => {
 const getSelectedBlog = async (req, res) => {
   const id = req.params.id;
   if (!id) {
-    return res.status(401).json({
+    return res.status(400).json({
       success: false,
       error: "No ID sent",
     });
@@ -126,17 +127,21 @@ const getSelectedBlog = async (req, res) => {
   }
 };
 
-const deleteSelectedBlog = async (req, res) => {
+const editSelectedBlog = async (req, res) => {
   const id = req.params.id;
-  if (!id) {
-    return res.status(401).json({
+  const data = req.body;
+  if (!id || !data) {
+    return res.status(400).json({
       success: false,
-      error: "No ID sent",
+      error: `Incoming Data: ${data}, Incoming ID ${id}`,
     });
   }
   try {
-    const requestedPost = await BlogPost.findByIdAndDelete(id);
-    if (!requestedPost) {
+    const updatedPost = await BlogPost.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!updatedPost) {
       return res.status(404).json({
         success: false,
         message: "Post Not Found",
@@ -145,7 +150,7 @@ const deleteSelectedBlog = async (req, res) => {
     return res.status(200).json({
       route: "Get Selected Post",
       success: true,
-      data: requestedPost,
+      data: updatedPost,
     });
   } catch (err) {
     return res.status(500).json({
@@ -154,10 +159,42 @@ const deleteSelectedBlog = async (req, res) => {
     });
   }
 };
+const deleteSelectedBlog = async (req, res) => {
+  const id = req.params.id;
+  if (!id) {
+    return res.status(400).json({
+      success: false,
+      error: "No ID sent",
+    });
+  }
+  try {
+    const result = await BlogPost.deleteOne({ _id: id });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Post Not Found",
+      });
+    }
+
+    return res.status(200).json({
+      route: "Delete Selected Post",
+      success: true,
+      deletedCount: result.deletedCount,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getLatestPost,
   getSelectedBlog,
   deleteSelectedBlog,
+  editSelectedBlog,
 };
