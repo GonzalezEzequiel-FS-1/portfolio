@@ -2,12 +2,7 @@ import { TextInput } from "@mantine/core";
 import React, { useState, useEffect } from "react";
 import { formatPhoneNumber } from "../../utils/formatPhoneNumber";
 
-const PhoneNumberInput = ({
-  value,
-  onChange,
-  label = "Phone Number",
-  ...props
-}) => {
+const PhoneNumberInput = ({ value, onChange, label = "Phone:", ...props }) => {
   const [phone, setPhone] = useState(value || "");
 
   // Keep internal state in sync if form value changes
@@ -24,7 +19,7 @@ const PhoneNumberInput = ({
   return (
     <TextInput
       {...props}
-      description="Type your Phone Number"
+      description="Please type your Phone Number."
       value={phone}
       onChange={handleChange}
       label={label}
@@ -32,6 +27,7 @@ const PhoneNumberInput = ({
       styles={{
         root: { width: "100%" },
         label: { fontSize: "1.25rem" },
+        description: { fontSize: "0.75rem" },
         input: {
           backgroundColor: "#44444450",
           fontWeight: 800,

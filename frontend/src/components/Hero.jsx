@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import FirefliesBackground from "./FirefliesBackground";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import FormModal from "./modal/FormModal";
 
 export default function Hero() {
   const nav = useNavigate();
@@ -98,6 +99,7 @@ export default function Hero() {
             >
               Contact Me
             </Button>
+            <FormModal />
           </div>
 
           {/* Sliding Anchor Carousel */}
