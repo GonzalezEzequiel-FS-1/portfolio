@@ -5,7 +5,13 @@ const createPost = async (req, res) => {
     req.body;
   console.log(req.body);
   if (
-    (!userId, !title || !subtitle || !body || !postedDate || !author || !user)
+    !userId ||
+    !title ||
+    !subtitle ||
+    !body ||
+    !postedDate ||
+    !author ||
+    !user
   ) {
     return res.status(400).json({
       success: false,
