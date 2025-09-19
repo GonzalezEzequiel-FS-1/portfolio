@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "../../firebaseAuth";
 import { useAuth } from "../auth/UseAuth";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const Login = () => {

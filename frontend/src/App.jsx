@@ -15,6 +15,8 @@ import IndividualPost from "./pages/IndividualPost";
 import { PostProvider } from "../context/PostContext";
 import AboutMe from "./pages/AboutMe";
 import ContactMe from "./pages/ContactMe";
+import NewFeatureCards from "./components/cards/NewFeatureCards";
+import CardSection from "./components/cards/cardSection/CardSection";
 
 const App = () => {
   const { bg } = useContext(ThemeContext);
@@ -31,6 +33,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<AboutMe />} />
                 <Route path="/contact" element={<ContactMe />} />
+                <Route path="/test" element={<CardSection />} />
               </Route>
 
               {/* Admin pages */}

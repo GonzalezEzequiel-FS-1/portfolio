@@ -1,5 +1,6 @@
 import { Text } from "@mantine/core";
 import React from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 const Specializations = () => {
   return (

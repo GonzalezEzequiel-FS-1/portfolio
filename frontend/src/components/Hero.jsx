@@ -1,14 +1,16 @@
 import { Anchor, Button } from "@mantine/core";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import FirefliesBackground from "./FirefliesBackground";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import FormModal from "./modal/FormModal";
 
 export default function Hero() {
-  const nav = useNavigate();
   const items = [
-    { text: "Download My Resume", link: "/Docs/EzequielGonzalezResume.pdf" },
+    {
+      text: "Download My Resume",
+      link: "/Docs/EzequielGonzalezResume2025.pdf",
+    },
     { text: "Read my blog", link: "/blogs" },
     { text: "Learn more about me", link: "/about" },
   ];
