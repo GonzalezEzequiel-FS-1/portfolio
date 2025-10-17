@@ -17,7 +17,7 @@ const logger = winston.createLogger({
 });
 
 // Environment variables
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const DBURL =
   process.env.DBURL ||
   "mongodb+srv://djzekz_db_user:sGKvASiVoAaicvZu@contactdata.uscilbs.mongodb.net/?retryWrites=true&w=majority";
