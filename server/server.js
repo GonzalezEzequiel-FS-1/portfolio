@@ -48,40 +48,26 @@ app.use((req, res, next) => {
   logger.info(`Incoming request: ${req.method} ${req.originalUrl}`);
   next();
 });
+
 // API routes
-const routes = require("./src/routes/index");
-app.use("/api", routes);
+const apiRoutes = require("./src/routes/index");
+app.use("/api", apiRoutes);
+
+// Showcase routes (dynamic)
+const showcaseRoutes = require("./src/routes/showcaseRoutes");
+app.use("/showcase", showcaseRoutes);
+
 // Paths
 const frontendPath = path.join(__dirname, "../frontend/dist");
-const dealerPath = path.join(__dirname, "../showcaseSites/dealer");
+
 // Serve main portfolio static files
 app.use(express.static(frontendPath));
-// Serve dealer static files
-app.use("/showcase/dealer", express.static(dealerPath));
 
-// Testing route (fixed typo: sowcase -> showcase)
-app.use("/showcase/testing", (req, res) => {
-  try {
-    return res.status(200).json({
-      success: true,
-      message: "Showcase working",
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message, // fixed: err -> error
-    });
-  }
-});
-
-// Catch-all for dealer React Router
-app.get("/showcase/dealer/*", (req, res) => {
-  res.sendFile(path.join(dealerPath, "index.html"));
-});
 // Catch-all for main portfolio React Router (must be last)
 app.get("/*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
+
 // Global error handler
 app.use((err, req, res, next) => {
   logger.error(err.stack);

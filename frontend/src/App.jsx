@@ -35,7 +35,7 @@ const RouteTracker = ({ children }) => {
 const App = () => {
   const { bg } = useContext(ThemeContext);
   return (
-    <Router basename="/showcase/dealer">  {/* ADD THIS */}
+    <Router>
       <RouteTracker>
         <AuthProvider>
           <PostProvider>

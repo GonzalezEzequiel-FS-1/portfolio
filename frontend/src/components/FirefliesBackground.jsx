@@ -1,13 +1,35 @@
 import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 const NUM_FIREFLIES = 30;
 
 export default function FirefliesBackground() {
-  const fireflies = useMemo(() => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
+  useEffect(() => {
+    // Set initial dimensions
+    setDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
+    // Optional: Update on resize
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const fireflies = useMemo(() => {
+    // Don't generate fireflies until we have dimensions
+    if (dimensions.width === 0 || dimensions.height === 0) return [];
+
+    const { width, height } = dimensions;
     return Array.from({ length: NUM_FIREFLIES }).map(() => {
       const size = Math.random() * 4 + 2;
       const startX = Math.random() * width;
@@ -19,10 +41,9 @@ export default function FirefliesBackground() {
       const color = `rgba(255,255,${200 + Math.random() * 50},${
         0.6 + Math.random() * 0.2
       })`;
-
       return { size, startX, startY, endX, endY, duration, delay, color };
     });
-  }, []);
+  }, [dimensions]);
 
   return (
     <div className="absolute top-0 left-0 w-full h-screen pointer-events-none z-0 overflow-hidden">

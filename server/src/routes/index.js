@@ -35,7 +35,6 @@ router
   .get(getSelectedBlog)
   .put(editSelectedBlog)
   .delete(deleteSelectedBlog);
-
 router.route("/blog/all").get(getAllPosts);
 
 module.exports = router;

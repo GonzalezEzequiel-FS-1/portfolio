@@ -39,7 +39,6 @@ const NavigationBar = () => {
 
     if (link.startsWith("#")) {
       const el = document.querySelector(link);
-
       if (el) {
         // If the element exists on the current page, scroll to it
         el.scrollIntoView({ behavior: "smooth" });
@@ -47,13 +46,11 @@ const NavigationBar = () => {
         // If not on the homepage, navigate there and pass the section to scroll to
         navigate("/", { state: { scrollTo: link } });
       }
-
       return;
     }
 
     if (link.includes("/")) {
       // route + hash
-
       console.log(
         `From ForwardSlash function ${link}, Location ${JSON.stringify(
           location
@@ -70,7 +67,6 @@ const NavigationBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         // scrolling down
         setShowNav(false);
@@ -78,7 +74,6 @@ const NavigationBar = () => {
         // scrolling up
         setShowNav(true);
       }
-
       setLastScrollY(currentScrollY);
     };
 
