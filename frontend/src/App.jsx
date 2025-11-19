@@ -22,7 +22,7 @@ import ContactMe from "./pages/ContactMe";
 import CardSection from "./components/cards/cardSection/CardSection";
 import { analytics } from "../firebaseConfig";
 import { logEvent } from "firebase/analytics";
-
+import {Showcase} from "./pages/Showcase"
 // Wrapper to track page views
 const RouteTracker = ({ children }) => {
   const location = useLocation();
@@ -50,6 +50,7 @@ const App = () => {
                   <Route path="/about" element={<AboutMe />} />
                   <Route path="/contact" element={<ContactMe />} />
                   <Route path="/test" element={<CardSection />} />
+                  <Route path="/showcase" element={<Showcase />} />
                 </Route>
 
                 {/* Admin pages */}
