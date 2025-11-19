@@ -34,9 +34,8 @@ const RouteTracker = ({ children }) => {
 
 const App = () => {
   const { bg } = useContext(ThemeContext);
-
   return (
-    <Router>
+    <Router basename="/showcase/dealer">  {/* ADD THIS */}
       <RouteTracker>
         <AuthProvider>
           <PostProvider>
@@ -49,28 +48,23 @@ const App = () => {
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<AboutMe />} />
                   <Route path="/contact" element={<ContactMe />} />
-                  <Route path="/test" element={<CardSection />} />
-                  <Route path="/showcase" element={<Showcase />} />
+                  <Route path="/showcase" element={<CardSection />} />
                 </Route>
-
                 {/* Admin pages */}
                 <Route element={<AdminLayout />}>
                   <Route path="/login" element={<Login />} />
                 </Route>
-
                 {/* Protected admin pages */}
                 <Route element={<PrivateRoute />}>
                   <Route path="/blogpost" element={<AdminPanel />} />
                 </Route>
-
                 {/* Blog pages */}
                 <Route element={<PostLayout />}>
                   <Route path="/blogs" element={<BlogPage />} />
                   <Route path="/blogs/:id" element={<IndividualPost />} />
                 </Route>
-
                 {/* Fallback */}
-    {/* <Route path="*" element={<Home />} /> */}
+                <Route path="*" element={<Home />} />
               </Routes>
             </div>
           </PostProvider>
