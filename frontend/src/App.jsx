@@ -22,7 +22,7 @@ import ContactMe from "./pages/ContactMe";
 import CardSection from "./components/cards/cardSection/CardSection";
 import { analytics } from "../firebaseConfig";
 import { logEvent } from "firebase/analytics";
-import {Showcase} from "./pages/Showcase"
+
 // Wrapper to track page views
 const RouteTracker = ({ children }) => {
   const location = useLocation();
@@ -70,7 +70,7 @@ const App = () => {
                 </Route>
 
                 {/* Fallback */}
-                <Route path="*" element={<Home />} />
+    {/* <Route path="*" element={<Home />} /> */}
               </Routes>
             </div>
           </PostProvider>
