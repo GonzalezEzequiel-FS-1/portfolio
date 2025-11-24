@@ -49,7 +49,7 @@ const App = () => {
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<AboutMe />} />
                   <Route path="/contact" element={<ContactMe />} />
-                  <Route path="/showcase" element={<Showcase />} />
+                  <Route path="/projects" element={<Showcase />} />
                 </Route>
                 {/* Admin pages */}
                 <Route element={<AdminLayout />}>
