@@ -19,6 +19,7 @@ import IndividualPost from "./pages/IndividualPost";
 import { PostProvider } from "../context/PostContext";
 import AboutMe from "./pages/AboutMe";
 import ContactMe from "./pages/ContactMe";
+import Showcase from "./pages/Showcase.jsx"
 import CardSection from "./components/cards/cardSection/CardSection";
 import { analytics } from "../firebaseConfig";
 import { logEvent } from "firebase/analytics";
@@ -48,7 +49,7 @@ const App = () => {
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<AboutMe />} />
                   <Route path="/contact" element={<ContactMe />} />
-                  <Route path="/showcase" element={<CardSection />} />
+                  <Route path="/showcase" element={<Showcase />} />
                 </Route>
                 {/* Admin pages */}
                 <Route element={<AdminLayout />}>
