@@ -98,7 +98,7 @@ const SecondFeatures = () => {
           exit={{ opacity: 0, y: 100 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
           viewport={{ once: false, amount: 0.3 }}
-          className="flex overflow-x-auto overflow-y-clip gap-6 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent p-4"
+          className="flex overflow-x-auto overflow-y-clip gap-6 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent py-4"
           style={{
             maskImage:
               "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
