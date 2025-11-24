@@ -33,6 +33,24 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
     }
   }, [location.state]);
 
+  // Dinamically set the document title (SEO Improvement)
+  useEffect(() => {
+    document.title = "EG Web Dev | Portfolio & Web Services";
+
+    const descriptionContent =
+      "EG Web Dev — Full-stack web development portfolio and services. Showcasing projects like Dealer Dashboard and AGPGraphx. Offering custom web apps, hosting, Firebase authentication, MongoDB database management, and client solutions.";
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", descriptionContent);
+    } else {
+      const meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content = descriptionContent;
+      document.head.appendChild(meta);
+    }
+  }, []);
+
   return (
     <div
       ref={ref}
@@ -76,16 +94,10 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
         </section>
       </div>
 
-      {/* Uncomment when ready */}
-      {/* <section id="contact" className="w-full py-20">
-        <ContactForm />
-      </section> */}
-
       <Footer />
     </div>
   );
 });
 
-Home.displayName = "Home"; // Good for React devtools
-
+Home.displayName = "Home";
 export default Home;
