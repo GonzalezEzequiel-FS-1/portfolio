@@ -6,7 +6,6 @@ import Features from "../components/Features/Features";
 import TechShuffle from "../components/carousel/CarouselComponent.jsx";
 import SecondFeatures from "../components/Features/SecondFeatures.jsx";
 import Specializations from "../components/Specialization/Specializations.jsx";
-import AboutMe from "./AboutMeCarrousel.jsx";
 import PagePreviews from "../components/PagePreviews/PagePreviews.jsx"; // Perfect path
 import { useLocation } from "react-router-dom";
 
