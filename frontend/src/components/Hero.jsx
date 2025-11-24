@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import FormModal from "./modal/FormModal";
 
 export default function Hero() {
+  const [hovered, setHovered] = useState(false);
   const items = [
     {
       text: "Download My Resume",
@@ -19,10 +20,12 @@ export default function Hero() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % items.length);
+      if (!hovered) {
+        setCurrentIndex((prev) => (prev + 1) % items.length);
+      }
     }, 3500);
     return () => clearInterval(interval);
-  }, []);
+  }, [hovered]);
 
   // Animation variants for sliding text
   const slideVariants = {
@@ -117,6 +120,8 @@ export default function Hero() {
               >
                 <Anchor
                   href={items[currentIndex].link}
+                  onMouseEnter={() => setHovered(true)}
+                  onMouseLeave={() => setHovered(false)}
                   className="text-white underline font-semibold text-lg md:text-xl hover:text-indigo-400 hover:scale-105 transition-transform duration-300"
                 >
                   {items[currentIndex].text}

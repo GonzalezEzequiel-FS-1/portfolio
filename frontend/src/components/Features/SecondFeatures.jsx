@@ -1,6 +1,5 @@
 import React from "react";
 import { Text } from "@mantine/core";
-// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const features = [
@@ -42,11 +41,11 @@ const SecondFeatures = () => {
       <div className="w-full px-4 py-12 md:py-20 max-w-7xl mx-auto flex flex-col">
         {/* Text Block */}
         <motion.div
-          initial={{ opacity: 0, x: -100 }} // start off-screen right
-          whileInView={{ opacity: 1, x: 0 }} // fade in + slide in
-          exit={{ opacity: 0, x: -100 }} // fade out + slide right
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
-          viewport={{ once: false, amount: 0.3 }} // triggers on enter AND exit
+          viewport={{ once: false, amount: 0.3 }}
         >
           <Text
             styles={{ root: { textAlign: "center", paddingBottom: "1rem" } }}
@@ -67,12 +66,12 @@ const SecondFeatures = () => {
             Building With You
           </Text>
         </motion.div>
+
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 100 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          yoyo:Infinity
           viewport={{ once: false, amount: 0.3 }}
           className="max-w-xl mx-auto"
         >
@@ -92,14 +91,20 @@ const SecondFeatures = () => {
           </Text>
         </motion.div>
 
-        {/* Horizontal Scroll Cards */}
+        {/* Horizontal Scroll Cards with fade edges */}
         <motion.section
-          initial={{ opacity: 0, y: 100 }} // start off-screen right
-          whileInView={{ opacity: 1, y: 0 }} // fade in + slide in
-          exit={{ opacity: 0, y: 100 }} // fade out + slide right
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 100 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
-          viewport={{ once: false, amount: 0.3 }} // triggers on enter AND exit
-          className="flex overflow-x-auto overflow-y-clip gap-6 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent"
+          viewport={{ once: false, amount: 0.3 }}
+          className="flex overflow-x-auto overflow-y-clip gap-6 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent p-4"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+          }}
         >
           {features.map((feature, index) => (
             <div

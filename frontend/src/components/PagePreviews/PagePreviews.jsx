@@ -1,5 +1,5 @@
 import PreviewCard from "../cards/PreviewCard";
-import previews from "../../utils/previews.json";
+import { previews } from "../../utils/previews";
 
 // Main component to render all page previews
 export default function PagePreviews() {
