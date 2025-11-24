@@ -5,16 +5,14 @@ import Footer from "../components/footer/Footer";
 import Features from "../components/Features/Features";
 import TechShuffle from "../components/carousel/CarouselComponent.jsx";
 import SecondFeatures from "../components/Features/SecondFeatures.jsx";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
-import { Button, Container, Text } from "@mantine/core";
-import { ThemeContext } from "../Theming/mantineColorScheme.jsx";
 import Specializations from "../components/Specialization/Specializations.jsx";
 import AboutMe from "./AboutMeCarrousel.jsx";
+import PagePreviews from "../components/PagePreviews/PagePreviews.jsx"; // Perfect path
 import { useLocation } from "react-router-dom";
 
 const Home = forwardRef(({ onScrollChange }, ref) => {
   const location = useLocation();
+
   useEffect(() => {
     const scrollEl = ref?.current;
     if (!scrollEl) return;
@@ -38,47 +36,56 @@ const Home = forwardRef(({ onScrollChange }, ref) => {
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-start w-screen scroll-smooth"
+      className="flex flex-col items-center justify-start w-screen scroll-smooth overflow-x-hidden"
     >
       <Hero />
 
-      <section className="h-full">
+      <section className="w-full">
         <section
           id="featuresOne"
-          className="w-screen flex items-center justify-center"
+          className="w-full flex items-center justify-center"
         >
           <Features />
         </section>
+
         <section
           id="featuresTwo"
-          className="w-screen flex-col flex items-center justify-center overflow-x-hidden"
+          className="w-full flex flex-col items-center justify-center overflow-hidden"
         >
           <SecondFeatures />
         </section>
       </section>
 
-      <div className="md:h-screen flex flex-col justify-around">
-        <section className="flex justify-center mb-10 items-center px-0 lg:px-20 xl:px-36 2xl:px-60">
+      <div className="w-full flex flex-col items-center">
+        {/* Specializations */}
+        <section className="w-full flex justify-center py-10 px-4 lg:px-20 xl:px-36 2xl:px-60">
           <Specializations />
         </section>
 
+        {/* This is where your beautiful live preview shines */}
+        <section className="w-full py-20 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent dark:via-purple-900/10">
+          <PagePreviews />
+        </section>
+
+        {/* Tech Carousel */}
         <section
           id="carrousel"
-          className="scroll-smooth w-screen flex flex-col items-center justify-around mb-10"
+          className="w-full flex flex-col items-center py-10"
         >
           <TechShuffle />
         </section>
       </div>
 
-      {/* <section
-        id="contact"
-        className="w-screen flex flex-col items-center justify-around"
-      >
+      {/* Uncomment when ready */}
+      {/* <section id="contact" className="w-full py-20">
         <ContactForm />
       </section> */}
+
       <Footer />
     </div>
   );
 });
+
+Home.displayName = "Home"; // Good for React devtools
 
 export default Home;

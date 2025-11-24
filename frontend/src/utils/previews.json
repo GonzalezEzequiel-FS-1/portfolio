@@ -1,0 +1,31 @@
+[
+  {
+    "id": "dealer",
+    "title": "Dealer Dashboard",
+    "description": "A dashboard that helps users find real cars for sale in their area, providing images, prices, and contact information. Users can filter by brand and model. Built with Next.js for server-side rendering, Tailwind CSS for styling, Firebase for authentication, and MongoDB for data storage. Fully self-hosted.",
+    "url": "https://www.egwebdev.com/showcase/dealer",
+    "previewImage": "/Imgs/nextridePreview.png",
+    "services": [
+      "Car listings aggregation",
+      "Search & filtering by brand/model",
+      "Image and price display",
+      "Contact management",
+      "Firebase Authentication",
+      "MongoDB Database Management",
+      "Self-hosted deployment"
+    ]
+  },
+  {
+    "id": "agpgraphx",
+    "title": "AGPGraphx Website",
+    "description": "A front-end dashboard currently in use by a sign-making business, built with Next.js for frontend, Tailwind CSS for responsive design, Firebase for authentication, and MongoDB for data storage. Self-hosted on custom infrastructure.",
+    "url": "https://www.agpgraphx.com",
+    "previewImage": "/Imgs/agpGraphxPreview.png",
+    "services": [
+      "Hosting",
+      "Email Management",
+      "Firebase Authentication",
+      "MongoDB Database Management"
+    ]
+  }
+]
