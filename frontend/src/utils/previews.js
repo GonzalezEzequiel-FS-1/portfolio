@@ -3,7 +3,16 @@ export const previews = [
     id: "dealer",
     title: "Dealer Dashboard",
     description:
-      "A dashboard that helps users find real cars for sale in their area, providing images, prices, and contact information. Users can filter by brand and model. Built with Next.js for server-side rendering, Tailwind CSS for styling, Firebase for authentication, and MongoDB for data storage. Fully self-hosted.",
+      "A dashboard that helps users find real cars for sale in their area, providing images, prices, and contact information. Users can filter by brand and model. Fully self-hosted.",
+    longDescription: `
+      The Dealer Dashboard is a fully self-hosted web application designed to streamline 
+      the car buying experience for users. It aggregates car listings from multiple sources, 
+      displays images and pricing in a clean, responsive interface, and allows users to filter 
+      by brand, model, and location. The platform also includes administrative tools for 
+      managing listings, tracking user activity, and integrating with a MongoDB database for 
+      efficient data management. Built with modern web technologies, it ensures fast performance 
+      and a seamless experience across desktop and mobile devices.
+    `,
     url:
       import.meta.env.VITE_DEALER_URL ||
       "https://www.egwebdev.com/showcase/dealer",
@@ -12,17 +21,23 @@ export const previews = [
       "Car listings aggregation",
       "Search & filtering by brand/model",
       "Image and price display",
-      "Contact management",
-      "Firebase Authentication",
       "MongoDB Database Management",
-      "Self-hosted deployment",
     ],
   },
   {
     id: "agpgraphx",
     title: "AGPGraphx Website",
     description:
-      "A front-end dashboard currently in use by a sign-making business, built with Next.js for frontend, Tailwind CSS for responsive design, Firebase for authentication, and MongoDB for data storage. Self-hosted on custom infrastructure.",
+      "A front-end dashboard currently in use by a sign-making business, Built with ReactJs, and NodeJs. Self-hosted on custom infrastructure.",
+    longDescription: `
+      AGPGraphx Website serves as the primary front-end dashboard for a sign-making business, 
+      allowing for content management, client interaction, and project tracking. The platform 
+      is built with ReactJS for a reactive, component-driven UI and NodeJS for server-side 
+      operations. Self-hosted on custom infrastructure, it includes Firebase Authentication 
+      for secure user access, MongoDB for efficient data storage, and email management tools 
+      to support business communications. The dashboard is fully responsive and optimized for 
+      smooth performance across all devices.
+    `,
     url: import.meta.env.VITE_AGPGRAPHX_URL || "https://www.agpgraphx.com",
     previewImage: "/Imgs/agpGraphxPreview.png",
     services: [
