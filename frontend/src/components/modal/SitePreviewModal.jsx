@@ -76,7 +76,7 @@ const SitePreviewModal = ({
           <iframe
             title={siteTitle}
             src={url}
-            className="w-full h-[60vh] md:h-[80vh] max-h-[667px] max-w-[375px] rounded-2xl shadow-2xl shadow-black/25 border border-gray-300/10"
+            className="w-full h-[60vh] md:h-[80vh] max-h-[667px] max-w-[375px] rounded-2xl shadow-2xs md:shadow-2xl shadow-black/25 border border-gray-300/10"
           />
         </motion.div>
 
