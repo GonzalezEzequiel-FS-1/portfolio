@@ -46,6 +46,7 @@ const App = () => {
               <Routes>
                 {/* User-facing pages */}
                 <Route element={<UserLayout />}>
+                  <Route path="/dealer/*" element={<div />} />  
                   <Route path="/test" element={<TestPage />} />
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<AboutMe />} />
