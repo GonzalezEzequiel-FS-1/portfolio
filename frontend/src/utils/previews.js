@@ -60,7 +60,7 @@ export const previews = [
       balances aesthetics, usability, and performance while remaining fully manageable through
       the WordPress admin panel.
     `,
-    url:"http://switchstack.egwebdev.com/"
+    url:"http://switchstack.egwebdev.com/",
     previewImage: "/Imgs/switchstackPreview.png",
     services: [
       "WooCommerce Development",

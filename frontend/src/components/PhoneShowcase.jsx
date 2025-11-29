@@ -4,14 +4,16 @@ const PhoneShowcase = ({
   src,
   title = "Website Showcase",
   phoneWidth = 200,
+  onClick,
 }) => {
   return (
     <div
-      className="relative mx-auto"
+      className="relative mx-auto cursor-pointer"
       style={{
         width: `${phoneWidth}px`,
         aspectRatio: "9/16",
       }}
+      onClick={onClick} // trigger modal on click
     >
       {/* Phone frame */}
       <div className="absolute inset-0 rounded-[36px] border-8 border-stone-950 shadow-lg overflow-hidden">
@@ -20,8 +22,8 @@ const PhoneShowcase = ({
           src={src}
           className="absolute top-0 left-0 w-full h-full border-0"
           style={{
-            scrollbarWidth: "none", // Firefox
-            msOverflowStyle: "none", // IE 10+
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
           }}
         ></iframe>
       </div>
@@ -31,9 +33,10 @@ const PhoneShowcase = ({
 
       <style jsx>{`
         iframe::-webkit-scrollbar {
-          display: none; /* Chrome, Safari, Opera */
+          display: none;
         }
       `}</style>
+      
     </div>
   );
 };
