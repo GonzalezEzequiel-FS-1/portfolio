@@ -15,7 +15,7 @@ export const previews = [
     `,
     url:
       import.meta.env.VITE_DEALER_URL ||
-      "https://www.egwebdev.com/showcase/dealer",
+      "https://nextride.egwebdev.com/",
     previewImage: "/Imgs/nextridePreview.png",
     services: [
       "Car listings aggregation",
