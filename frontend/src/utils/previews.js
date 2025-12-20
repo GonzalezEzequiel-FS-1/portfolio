@@ -68,6 +68,31 @@ export const previews = [
       "SEO Optimization",
       "Global Shipping Setup",
     ],
-  }
+  },
+  {
+  id: "aesir",
+  title: "Project Æsir",
+  description:
+    "A gamified AI development assistant that rewards thoughtful code review, refactoring, and improvement. Tracks XP, levels, and skill stats as you interact with AI-generated code.",
+  longDescription: `
+    Project Æsir is an innovative AI coding assistant designed to make developers
+    more engaged and skilled. Unlike traditional code generators, Æsir rewards
+    critical thinking and careful refinement of AI-suggested code. Users earn XP
+    for actions like editing, refactoring, adding meaningful comments, and
+    identifying bugs, while simply accepting code yields minimal growth. With
+    a clear progression system, skill stats, and a visually engaging web UI,
+    Æsir turns programming into a gameful learning experience. Fully self-hosted
+    at aesir.egwebdev.com, built with modern web technologies for responsive
+    performance across devices.
+  `,
+  url: import.meta.env.VITE_AESIR_URL || "https://aesir.egwebdev.com",
+  previewImage: "/Imgs/aesirPreview.png", // you can add an image at this path
+  services: [
+    "Gamified AI code assistant",
+    "XP & level tracking",
+    "Critical code review rewards",
+    "Skill stats & progression",
+  ],
+}
 ];
 
