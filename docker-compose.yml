@@ -1,0 +1,7 @@
+services:
+  app:
+    build: ./server
+    ports:
+      - "4069:4000"
+    volumes:
+      - ./frontend/dist:/app/public
