@@ -11,10 +11,12 @@ yarn.lock
 pnpm-lock.yaml
 
 
+
 #-------------------------
 # Backup files
 #-------------------------
 frontend_backup_*/
+DistBackup/*
 
 # -----------------------------
 # Build / output folders

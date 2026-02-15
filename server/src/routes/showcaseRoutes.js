@@ -4,7 +4,7 @@ const fs = require("fs");
 const router = express.Router();
 
 // Base path for all showcase sites
-const showcaseBasePath = path.join(__dirname, "../../../ShowcaseFiles");
+const showcaseBasePath = path.join(__dirname, "../../../showcaseSites/");
 
 // Middleware to validate and serve showcase site static files
 router.use("/:siteName", (req, res, next) => {
@@ -58,6 +58,7 @@ router.get("/:siteName/*", (req, res, next) => {
       return res.status(404).json({
         success: false,
         message: `Showcase site "${siteName}" not found`,
+        path:showcaseBasePath
       });
     }
   }

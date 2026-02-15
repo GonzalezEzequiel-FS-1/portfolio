@@ -14,7 +14,6 @@ import { useAuth } from "../auth/UseAuth";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Login = () => {
-  const nav = useNavigate();
   const { user } = useAuth();
   const navigate = useNavigate();
   const [signup, setSignup] = useState(false);
@@ -67,6 +66,23 @@ const Login = () => {
   useEffect(() => {
     if (user) navigate("/blogpost");
   }, [user, navigate]);
+
+  useEffect(() => {
+    document.title = "EG Web Dev | Blog Login";
+
+    const descriptionContent =
+      "EG Web Dev Blog Login — Access your account to manage posts, create content, and explore web development insights.";
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", descriptionContent);
+    } else {
+      const meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content = descriptionContent;
+      document.head.appendChild(meta);
+    }
+  }, []);
 
   return (
     <AnimatePresence>
@@ -157,7 +173,7 @@ const Login = () => {
               </Button>
               <Button
                 size="xs"
-                onClick={() => nav("/")}
+                onClick={() => navigate("/")}
                 variant="outline"
                 color="red"
               >

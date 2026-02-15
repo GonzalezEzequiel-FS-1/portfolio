@@ -22,6 +22,7 @@ import ContactMe from "./pages/ContactMe";
 import CardSection from "./components/cards/cardSection/CardSection";
 import { analytics } from "../firebaseConfig";
 import { logEvent } from "firebase/analytics";
+import TestPage from "./pages/TestPage";
 
 // Wrapper to track page views
 const RouteTracker = ({ children }) => {
@@ -45,6 +46,8 @@ const App = () => {
               <Routes>
                 {/* User-facing pages */}
                 <Route element={<UserLayout />}>
+                  <Route path="/dealer/*" element={<div />} />  
+                  <Route path="/test" element={<TestPage />} />
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<AboutMe />} />
                   <Route path="/contact" element={<ContactMe />} />
