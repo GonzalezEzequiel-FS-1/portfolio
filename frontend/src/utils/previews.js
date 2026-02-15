@@ -60,7 +60,7 @@ export const previews = [
       balances aesthetics, usability, and performance while remaining fully manageable through
       the WordPress admin panel.
     `,
-    url:"http://switchstack.egwebdev.com/",
+    url: "http://switchstack.egwebdev.com/",
     previewImage: "/Imgs/switchstackPreview.png",
     services: [
       "WooCommerce Development",
@@ -70,11 +70,11 @@ export const previews = [
     ],
   },
   {
-  id: "aesir",
-  title: "Project Æsir",
-  description:
-    "A gamified AI development assistant that rewards thoughtful code review, refactoring, and improvement. Tracks XP, levels, and skill stats as you interact with AI-generated code.",
-  longDescription: `
+    id: "aesir",
+    title: "Project Æsir",
+    description:
+      "A gamified AI development assistant that rewards thoughtful code review, refactoring, and improvement. Tracks XP, levels, and skill stats as you interact with AI-generated code.",
+    longDescription: `
     Project Æsir is an innovative AI coding assistant designed to make developers
     more engaged and skilled. Unlike traditional code generators, Æsir rewards
     critical thinking and careful refinement of AI-suggested code. Users earn XP
@@ -85,14 +85,13 @@ export const previews = [
     at aesir.egwebdev.com, built with modern web technologies for responsive
     performance across devices.
   `,
-  url: import.meta.env.VITE_AESIR_URL || "https://aesir.egwebdev.com",
-  previewImage: "/Imgs/aesirPreview.png", // you can add an image at this path
-  services: [
-    "Gamified AI code assistant",
-    "XP & level tracking",
-    "Critical code review rewards",
-    "Skill stats & progression",
-  ],
-}
+    url: import.meta.env.VITE_AESIR_URL || "https://aesir.n00bst3r.com",
+    previewImage: "/Imgs/aesirPreview.png", // you can add an image at this path
+    services: [
+      "Gamified AI code assistant",
+      "XP & level tracking",
+      "Critical code review rewards",
+      "Skill stats & progression",
+    ],
+  },
 ];
-
